@@ -18,12 +18,12 @@
     <meta property="og:title" content="Ansh Mishra - AI/ML Developer Portfolio">
     <meta property="og:description"
         content="Explore Ansh Mishra's projects and expertise in Artificial Intelligence and Machine Learning.">
-    <meta property="og:image" content="https://placehold.co/1200x630/20C997/ffffff?text=Ansh+Mishra+Portfolio">
+    <meta property="og:image" content="https://placehold.co/1200x630/4338CA/ffffff?text=Ansh+Mishra+Portfolio">
     <meta property="og:url" content="YOUR_WEBSITE_URL">
     <meta property="og:type" content="website">
 
     <!-- Favicon -->
-    <link rel="icon" href="https://placehold.co/32x32/20C997/ffffff?text=AM" type="image/x-icon">
+    <link rel="icon" href="https://placehold.co/32x32/4338CA/ffffff?text=AM" type="image/x-icon">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -33,145 +33,135 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap"
         rel="stylesheet">
-    <!-- Animation & Particle Libraries -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- Animation Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <style>
         :root {
-            /* Light Mode (Default) */
-            --bg-light: #F8F9FA;
-            --text-primary-light: #1a202c;
-            --text-secondary-light: #4a5568;
-            --card-bg-light: #FFFFFF;
-            --border-light: #E2E8F0;
-            --accent-light: #20C997;
-            --accent-hover-light: #17A2B8;
-            --light-card-bg: #F7FAFC;
+            /* --- Elegant & Refined Color Palette --- */
+            /* Light Mode */
+            --bg-light: #FDFDFF; /* Softer white */
+            --text-primary-light: #111827;
+            --text-secondary-light: #6B7280;
+            --card-bg-light: rgba(255, 255, 255, 0.7); /* Semi-transparent */
+            --border-light: #E5E7EB;
+            --accent-light: #4338CA; /* Deep Indigo */
+            --accent-hover-light: #4F46E5;
 
             /* Dark Mode */
-            --bg-dark: #121212; /* True black for OLED */
-            --text-primary-dark: #F7FAFC;
-            --text-secondary-dark: #A0AEC0;
-            --card-bg-dark: #1E1E1E; /* Off-black for depth */
-            --border-dark: #2D3748;
+            --bg-dark: #0D1117; /* GitHub Dark */
+            --text-primary-dark: #F0F6FC;
+            --text-secondary-dark: #8B949E;
+            --card-bg-dark: rgba(22, 27, 34, 0.7); /* Semi-transparent */
+            --border-dark: #30363D;
+            --accent-dark: #7C3AED; /* Vibrant Violet */
+            --accent-hover-dark: #8B5CF6;
         }
         
         html.dark {
-            --bg-light: var(--bg-dark);
-            --card-bg-light: var(--card-bg-dark);
-            --text-primary-light: var(--text-primary-dark);
-            --text-secondary-light: var(--text-secondary-dark);
-            --border-light: var(--border-dark);
-            --light-card-bg: var(--card-bg-dark);
+            --accent-light: var(--accent-dark);
+            --accent-hover-light: var(--accent-hover-dark);
         }
 
         html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Lato', sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: var(--bg-light);
             color: var(--text-primary-light);
-            transition: background-color 0.5s ease, color 0.5s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
             overflow-x: hidden;
         }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--text-primary-light);
-        }
-
-        p { color: var(--text-secondary-light); }
-        .text-secondary { color: var(--text-secondary-light); }
-
-        .header-glass {
-            background: rgba(248, 249, 250, 0.8);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-light);
-            transition: all 0.3s ease;
-        }
-
-        html.dark .header-glass {
-            background: rgba(18, 18, 18, 0.75);
-            border-bottom-color: var(--border-dark);
-        }
+        
+        html.dark body { background-color: var(--bg-dark); color: var(--text-primary-dark); }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; color: var(--text-primary-light); }
+        html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark h5, html.dark h6 { color: var(--text-primary-dark); }
+        p { color: var(--text-secondary-light); line-height: 1.7; }
+        html.dark p { color: var(--text-secondary-dark); }
 
         .accent-text { color: var(--accent-light); }
         
-        /* --- NEW: Minimalist Card with Glow Effect --- */
-        .minimal-card {
+        #gradient-canvas {
+            width:100%;
+            height:100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            --gradient-color-1: #e0c3fc; 
+            --gradient-color-2: #8ec5fc; 
+            --gradient-color-3: #f0abfc; 
+            --gradient-color-4: #a8c0ff;
+        }
+        html.dark #gradient-canvas {
+            --gradient-color-1: #1e2a78;
+            --gradient-color-2: #2a0d45;
+            --gradient-color-3: #1a1a3d;
+            --gradient-color-4: #3c1e59;
+        }
+
+        .header-glass {
+            background: rgba(253, 253, 255, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+        html.dark .header-glass {
+            background: rgba(13, 17, 23, 0.6);
+            border-bottom-color: var(--border-dark);
+        }
+        
+        .glass-card {
             background-color: var(--card-bg-light);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid var(--border-light);
             border-radius: 1rem;
             padding: 1.5rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
-        .minimal-card:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border-radius: 1rem;
-            border: 2px solid transparent;
-            background: linear-gradient(120deg, var(--accent-light), var(--accent-hover-light)) border-box;
-            -webkit-mask:
-                linear-gradient(#fff 0 0) padding-box, 
-                linear-gradient(#fff 0 0);
-            -webkit-mask-composite: destination-out;
-            mask-composite: exclude;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        .minimal-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
-        }
-        .minimal-card:hover:before { opacity: 1; }
+        html.dark .glass-card { background-color: var(--card-bg-dark); border-color: var(--border-dark); }
         
-        /* --- NEW: Modern Button Style --- */
-        .modern-btn {
+        .elegant-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             padding: 0.75rem 1.5rem;
             border-radius: 9999px;
             font-weight: 500;
             color: white;
-            background: linear-gradient(120deg, var(--accent-light), var(--accent-hover-light));
-            background-size: 200% 100%;
-            transition: all 0.4s ease;
-            border: none;
-            box-shadow: 0 4px 15px rgba(32, 201, 151, 0.2);
+            background: var(--accent-light);
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
-        .modern-btn:hover {
-            background-position: 100% 0;
-            box-shadow: 0 6px 20px rgba(32, 201, 151, 0.3);
-            transform: translateY(-2px);
+        .elegant-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(0,0,0,0.1);
+            background: var(--accent-hover-light);
         }
-        .modern-btn:active {
-            transform: translateY(0px) scale(0.98);
-            box-shadow: 0 2px 10px rgba(32, 201, 151, 0.2);
-        }
-        .modern-btn-secondary {
+        .elegant-btn-secondary {
             background: transparent;
-            border: 1px solid var(--border-light);
+            border-color: var(--border-light);
             color: var(--text-primary-light);
             box-shadow: none;
         }
-        .modern-btn-secondary:hover {
-            background: var(--light-card-bg);
+        html.dark .elegant-btn-secondary { border-color: var(--border-dark); color: var(--text-primary-dark); }
+        .elegant-btn-secondary:hover {
             border-color: var(--accent-light);
             color: var(--accent-light);
+            background-color: var(--accent-light-alpha-10, rgba(67, 56, 202, 0.05));
+        }
+        html.dark .elegant-btn-secondary:hover {
+            background-color: var(--accent-dark-alpha-10, rgba(124, 58, 237, 0.05));
         }
 
-        /* --- Nav Link Hover Effect --- */
         .nav-link {
-            position: relative; padding: 8px 12px; color: var(--text-primary-light);
+            position: relative; padding: 8px 12px;
             transition: color 0.3s ease; font-weight: 500;
         }
         .nav-link::after {
@@ -179,109 +169,124 @@
             bottom: 0; left: 50%; transform: translateX(-50%);
             background-color: var(--accent-light); transition: width 0.3s ease-out;
         }
-        .nav-link:hover { color: var(--accent-light); }
+        .nav-link:hover, .nav-link.active { color: var(--accent-light); }
         .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-        .nav-link.active { color: var(--accent-light); font-weight: 600; }
         
-        /* --- Modal Styles --- */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.8); backdrop-filter: blur(5px);
-            display: flex; justify-content: center; align-items: center;
-            z-index: 1000; opacity: 0; visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
+        /* --- REVISED: Horizontal Scroll Section for Projects --- */
+        .horizontal-scroll-section {
+            height: auto; /* Let content define height */
+            padding: 4rem 0;
         }
-        .modal-overlay.open { opacity: 1; visibility: visible; }
-        .modal-content {
-            background-color: var(--card-bg-light);
-            border-radius: 1rem; max-width: 90%; max-height: 90%;
-            overflow-y: auto; transform: scale(0.95);
-            transition: transform 0.3s ease; position: relative;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        .projects-container-wrapper {
+            height: 70vh; /* Set a fixed height for the scrolling viewport */
+            display: flex;
+            align-items: center;
         }
-        .modal-overlay.open .modal-content { transform: scale(1); }
-        
-        /* --- Tech Stack Grid --- */
-        .tech-item {
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            background-color: var(--light-card-bg); padding: 1rem; border-radius: 0.75rem;
-            border: 1px solid var(--border-light); transition: all 0.2s ease;
+        .projects-container {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 2rem;
+            padding: 0 max(32px, (100% - 1280px) / 2);
         }
-        .tech-item:hover {
-            transform: translateY(-4px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            background-color: var(--card-bg-light);
+        .project-card {
+            flex: 0 0 85vw; /* On mobile, card is 85% of viewport width */
+            max-width: 400px; /* On desktop, max width is 400px */
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.4s ease;
         }
-        .tech-item img { height: 40px; width: 40px; margin-bottom: 0.75rem; }
-        .tech-item p { font-weight: 500; font-size: 0.9rem; color: var(--text-primary-light); }
-        
-        /* --- Profile Picture --- */
-        .profile-container {
-            position: relative; margin: 0 auto 2rem;
-            width: 180px; height: 180px; border-radius: 50%;
-            background: linear-gradient(135deg, #20C997, #17A2B8);
+        .project-card:hover { transform: translateY(-10px); }
+        .project-card .card-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-card .card-footer {
+            margin-top: auto; /* Pushes footer to the bottom */
+        }
+
+        .certification-list a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+            transition: background-color 0.3s ease;
+        }
+        html.dark .certification-list a { border-color: var(--border-dark); }
+        .certification-list a:hover {
+            background-color: rgba(67, 56, 202, 0.03);
+        }
+        html.dark .certification-list a:hover {
+            background-color: rgba(124, 58, 237, 0.03);
+        }
+        .certification-list .arrow { transition: transform 0.3s ease; }
+        .certification-list a:hover .arrow { transform: translateX(5px); color: var(--accent-light); }
+
+        .timeline { position: relative; padding: 1rem 0; }
+        .timeline:before {
+            content: ''; position: absolute; top: 0; left: 15px;
+            height: 100%; width: 2px; background: var(--border-light);
+        }
+        html.dark .timeline:before { background: var(--border-dark); }
+        .timeline-item { position: relative; padding-left: 4rem; margin-bottom: 2rem; }
+        .timeline-dot {
+            position: absolute; left: 0; top: 0.25rem;
+            height: 32px; width: 32px;
+            background: var(--bg-light);
+            border: 2px solid var(--accent-light);
+            border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 10px 25px rgba(32, 201, 151, 0.3);
-            animation: float 4s ease-in-out infinite;
         }
-        .profile-picture {
-            width: 170px; height: 170px; border-radius: 50%;
-            object-fit: cover; border: 4px solid var(--card-bg-light);
-        }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
+        html.dark .timeline-dot { background: var(--bg-dark); }
+        .timeline-date { font-size: 0.8rem; color: var(--text-secondary-light); margin-bottom: 0.25rem; }
+        html.dark .timeline-date { color: var(--text-secondary-dark); }
 
-        /* --- Section Divider --- */
-        .section-divider-line { width: 80px; border-top: 1px solid var(--border-light); }
-
-        /* --- Loading Screen --- */
         #loading-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background-color: var(--bg-light);
+            html.dark & { background-color: var(--bg-dark); }
             display: flex; justify-content: center; align-items: center;
             z-index: 9999; transition: opacity 0.5s ease-out;
         }
         .spinner {
-            width: 60px; height: 60px;
-            border: 5px solid rgba(32, 201, 151, 0.2);
-            border-top-color: var(--accent-light);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
+            width: 60px; height: 60px; border: 5px solid;
+            border-color: var(--accent-light) transparent var(--accent-light) transparent;
+            border-radius: 50%; animation: spin 1.2s linear infinite;
         }
         @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* --- Scroll-to-Top Button --- */
         #scroll-to-top-btn {
             position: fixed; bottom: 25px; right: 25px;
+            background-color: var(--accent-light);
             color: white; width: 50px; height: 50px;
-            font-size: 1.5rem; cursor: pointer;
+            border-radius: 50%; display: flex;
+            justify-content: center; align-items: center;
+            font-size: 1.2rem; cursor: pointer;
             opacity: 0; visibility: hidden; z-index: 998;
-            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease;
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: none;
         }
         #scroll-to-top-btn.show { opacity: 1; visibility: visible; }
-        
-        /* --- Background Particles --- */
-        #particles-js {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; z-index: -1;
-        }
+        #scroll-to-top-btn:hover { transform: translateY(-5px) scale(1.1); }
 
-        /* Mobile Menu */
         #mobile-menu {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--bg-light); z-index: 999;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            background: var(--bg-light);
+            html.dark & { background-color: var(--bg-dark); }
+            z-index: 999; display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
             transform: translateY(-100%); transition: transform 0.3s ease-in-out;
         }
         #mobile-menu.open { transform: translateY(0); }
     </style>
 </head>
 
-<body class="transition-colors duration-500">
+<body>
     <div id="loading-screen" role="status"><div class="spinner"></div></div>
-    <div id="particles-js" aria-hidden="true"></div>
+    <canvas id="gradient-canvas" data-transition-in></canvas>
 
     <!-- Header -->
     <header class="header-glass fixed top-0 left-0 right-0 z-50" id="main-header">
@@ -298,14 +303,8 @@
                 <button id="theme-toggle" class="mr-4 text-xl text-secondary hover:accent-text transition-colors rounded-full p-2" aria-label="Toggle dark mode">
                     <i class="fas fa-moon"></i>
                 </button>
-                <a href="Ansh_Mishra_Resume.pdf" download
-                    class="hidden md:inline-block modern-btn"
-                    aria-label="Download Resume">
-                    Resume
-                </a>
-                <button id="mobile-menu-button" class="md:hidden ml-4 text-2xl p-1" aria-label="Open mobile menu">
-                    <i class="fas fa-bars"></i>
-                </button>
+                <a href="Ansh_Mishra_Resume.pdf" download class="hidden md:inline-block elegant-btn" aria-label="Download Resume">Resume</a>
+                <button id="mobile-menu-button" class="md:hidden ml-4 text-2xl p-1" aria-label="Open mobile menu"><i class="fas fa-bars"></i></button>
             </div>
         </div>
     </header>
@@ -319,89 +318,87 @@
             <a href="#projects" class="mobile-nav-link">Projects</a>
             <a href="#certifications" class="mobile-nav-link">Certifications</a>
             <a href="#contact" class="mobile-nav-link">Contact</a>
-            <a href="Ansh_Mishra_Resume.pdf" download class="mt-8 modern-btn">Resume</a>
+            <a href="Ansh_Mishra_Resume.pdf" download class="mt-8 elegant-btn">Resume</a>
         </nav>
     </div>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-6 pt-24 relative z-10">
+    <main class="relative z-10">
 
         <!-- Home Section -->
-        <section id="home" class="min-h-[80vh] flex flex-col justify-center items-start text-left">
+        <section id="home" class="container mx-auto px-6 min-h-screen flex flex-col justify-center items-start text-left">
             <div class="max-w-4xl">
                 <p class="gsap-reveal-el accent-text text-xl font-medium mb-3">Hi, my name is</p>
                 <h1 class="gsap-reveal-el text-6xl md:text-8xl font-bold mb-4">Ansh Mishra.</h1>
                 <h2 class="gsap-reveal-el text-4xl md:text-6xl font-bold text-secondary mb-8">I build intelligent systems.</h2>
-                <p class="gsap-reveal-el max-w-xl text-lg leading-relaxed mb-12">I'm a student developer with a passion for AI & ML, focused on creating smart, user-friendly solutions to complex problems.</p>
-                <div class="gsap-reveal-el"><a href="#projects" class="modern-btn text-lg" aria-label="Explore My Work">Explore My Work</a></div>
+                <p class="gsap-reveal-el max-w-xl text-lg mb-12">I'm a student developer with a passion for AI & ML, focused on creating smart, user-friendly solutions to complex problems.</p>
+                <div class="gsap-reveal-el"><a href="#projects" class="elegant-btn text-lg" aria-label="Explore My Work">Explore My Work</a></div>
             </div>
         </section>
-
-        <!-- "What I Do" Section -->
-        <section id="what-i-do" class="py-16 gsap-section">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                <div class="gsap-reveal-el minimal-card"><i class="fas fa-brain fa-2x accent-text mb-4"></i><h3 class="text-xl font-semibold mb-2">Machine Learning</h3><p>Exploring models that learn from data to find patterns and make predictions.</p></div>
-                <div class="gsap-reveal-el minimal-card"><i class="fas fa-lightbulb fa-2x accent-text mb-4"></i><h3 class="text-xl font-semibold mb-2">Creative Problem-Solving</h3><p>Transforming complex challenges into simple, elegant, and intelligent solutions.</p></div>
-                <div class="gsap-reveal-el minimal-card"><i class="fas fa-code fa-2x accent-text mb-4"></i><h3 class="text-xl font-semibold mb-2">Frontend Development</h3><p>Building intuitive user interfaces with modern tools like Tailwind CSS.</p></div>
-            </div>
-        </section>
-
-        <div class="relative flex justify-center my-16 gsap-section"><div class="section-divider-line gsap-reveal-el"></div></div>
 
         <!-- About Section -->
-        <section id="about" class="py-20 md:py-32 gsap-section">
-            <h2 class="gsap-reveal-el text-4xl font-bold mb-12 flex items-center"><span class="accent-text text-2xl font-semibold mr-4">01.</span> About Me</h2>
-            <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
-                <div class="lg:col-span-2 gsap-reveal-el"><div class="profile-container"><img src="prof.jpeg" alt="Ansh Mishra" class="profile-picture" loading="lazy"></div></div>
-                <div class="lg:col-span-3">
-                    <h3 class="gsap-reveal-el text-2xl font-semibold mb-4">My Journey in AI</h3>
-                    <p class="gsap-reveal-el mb-4">Hello! I'm Ansh — a developer driven by curiosity. My journey into technology began with a humble "Hello, World!" and quickly transformed into a passion for building systems that can learn, adapt, and think.</p>
-                    <blockquote class="gsap-reveal-el my-6 border-l-4 accent-border bg-gray-50 dark:bg-gray-800 p-4"><p class="italic">"I thrive where theory meets application—blending academic insight with practical implementation."</p></blockquote>
-                    <p class="gsap-reveal-el">I'm fascinated by deep learning and find joy in bringing models to life through hands-on coding. Beyond the code, I'm committed to innovation and staying in sync with the ever-evolving AI landscape.</p>
-                    <h4 class="gsap-reveal-el text-xl font-semibold mt-10 mb-6">My Tech Stack</h4>
-                    <div class="tech-stack-grid">
-                        <div class="gsap-reveal-el tech-item"><img src="https://cdn.svgporn.com/logos/python.svg" alt="Python Icon"><p>Python</p></div>
-                        <div class="gsap-reveal-el tech-item"><img src="https://cdn.svgporn.com/logos/tensorflow.svg" alt="TensorFlow Icon"><p>TensorFlow</p></div>
-                        <div class="gsap-reveal-el tech-item"><img src="https://cdn.svgporn.com/logos/pytorch-icon.svg" alt="PyTorch Icon"><p>PyTorch</p></div>
-                        <div class="gsap-reveal-el tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikit-learn/scikit-learn-original.svg" alt="Scikit-learn Icon"><p>Scikit-learn</p></div>
-                        <div class="gsap-reveal-el tech-item"><img src="https://cdn.svgporn.com/logos/pandas-icon.svg" alt="Pandas Icon"><p>Pandas</p></div>
-                        <div class="gsap-reveal-el tech-item"><img src="https://cdn.svgporn.com/logos/numpy.svg" alt="NumPy Icon"><p>NumPy</p></div>
-                        <div class="gsap-reveal-el tech-item"><img src="https://cdn.svgporn.com/logos/tailwindcss-icon.svg" alt="Tailwind CSS Icon"><p>Tailwind</p></div>
-                        <div class="gsap-reveal-el tech-item"><img src="https://cdn.svgporn.com/logos/firebase.svg" alt="Firebase Icon"><p>Firebase</p></div>
+        <section id="about" class="container mx-auto px-6 py-20 md:py-32 gsap-section">
+            <h2 class="gsap-reveal-el text-4xl font-bold mb-12"><span class="accent-text">01.</span> About Me</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                <div class="gsap-reveal-el">
+                    <h3 class="text-2xl font-semibold mb-4">My Journey in AI</h3>
+                    <p class="mb-6">Hello! I'm Ansh — a developer driven by curiosity. My journey into technology began with a humble "Hello, World!" and quickly transformed into a passion for building systems that can learn, adapt, and think.</p>
+                    <p>I'm fascinated by deep learning and find joy in bringing models to life through hands-on coding. Beyond the code, I'm committed to innovation and staying in sync with the ever-evolving AI landscape.</p>
+                </div>
+                <div class="gsap-reveal-el">
+                    <h3 class="text-2xl font-semibold mb-4">Learning Journey</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"><i class="fas fa-star"></i></div>
+                            <p class="timeline-date">2023</p>
+                            <h4 class="font-semibold">First Steps into AI</h4>
+                            <p class="text-sm">Completed "Elements of AI", sparking my initial interest in the field.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"><i class="fas fa-code"></i></div>
+                            <p class="timeline-date">2024</p>
+                            <h4 class="font-semibold">Hands-on Projects</h4>
+                            <p class="text-sm">Began building practical applications and participating in events like CodeDay.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"><i class="fas fa-rocket"></i></div>
+                            <p class="timeline-date">Present</p>
+                            <h4 class="font-semibold">Deepening Expertise</h4>
+                            <p class="text-sm">Focusing on advanced concepts and seeking new challenges to apply my skills.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <div class="relative flex justify-center my-16 gsap-section"><div class="section-divider-line gsap-reveal-el"></div></div>
-
-        <!-- Projects & Certifications Sections -->
+        <!-- Projects Section (Horizontal Scroll) -->
         <section id="projects" class="py-20 md:py-32 gsap-section">
-            <h2 class="gsap-reveal-el text-4xl font-bold mb-12 flex items-center"><span class="accent-text text-2xl font-semibold mr-4">02.</span> Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"></div>
+            <div class="container mx-auto px-6 mb-12">
+                <h2 class="gsap-reveal-el text-4xl font-bold"><span class="accent-text">02.</span> Projects</h2>
+            </div>
+            <div class="horizontal-scroll-section">
+                <div class="projects-container-wrapper">
+                    <div class="projects-container">
+                        <!-- Project cards will be populated by JS -->
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <div class="relative flex justify-center my-16 gsap-section"><div class="section-divider-line gsap-reveal-el"></div></div>
-        
-        <section id="certifications" class="py-20 md:py-32 gsap-section">
-            <h2 class="gsap-reveal-el text-4xl font-bold mb-12 flex items-center"><span class="accent-text text-2xl font-semibold mr-4">03.</span> Certifications</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"></div>
+        <!-- Certifications Section -->
+        <section id="certifications" class="container mx-auto px-6 py-20 md:py-32 gsap-section">
+            <h2 class="gsap-reveal-el text-4xl font-bold mb-12"><span class="accent-text">03.</span> Certifications</h2>
+            <div class="gsap-reveal-el glass-card certification-list">
+                <!-- Certification list will be populated by JS -->
+            </div>
         </section>
 
-        <div class="relative flex justify-center my-16 gsap-section"><div class="section-divider-line gsap-reveal-el"></div></div>
-
-        <!-- CTA & Contact Sections -->
-        <section class="py-20 text-center gsap-section">
-            <h2 class="gsap-reveal-el text-3xl font-bold">Let's Build Something Together</h2>
-            <p class="gsap-reveal-el mx-auto mt-4 max-w-2xl text-lg text-secondary">Have a project in mind, or just want to connect? I'm always open to new ideas and collaborations.</p>
-            <a href="#contact" class="gsap-reveal-el mt-8 inline-block modern-btn text-lg">Say Hello</a>
-        </section>
-
-        <section id="contact" class="py-20 md:py-32 text-center gsap-section">
-            <h2 class="gsap-reveal-el text-4xl font-bold mb-12 flex items-center justify-center"><span class="accent-text text-2xl font-semibold mr-4">04.</span> Get In Touch</h2>
-            <p class="gsap-reveal-el max-w-xl mx-auto text-lg text-secondary mb-10">I'm currently seeking new opportunities. Feel free to reach out via email or connect with me on social media!</p>
+        <!-- Contact Section -->
+        <section id="contact" class="container mx-auto px-6 py-20 md:py-32 text-center gsap-section">
+            <h2 class="gsap-reveal-el text-4xl font-bold"><span class="accent-text">04.</span> Get In Touch</h2>
+            <p class="gsap-reveal-el mx-auto mt-4 max-w-2xl text-lg mb-10">I'm always open to new ideas and collaborations. Feel free to reach out!</p>
             <div class="gsap-reveal-el flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <button id="copy-email-button" class="modern-btn modern-btn-secondary w-full sm:w-auto"><i class="fas fa-copy mr-2"></i> ansh.mishra22@outlook.com</button>
+                <button id="copy-email-button" class="elegant-btn elegant-btn-secondary w-full sm:w-auto"><i class="fas fa-envelope mr-2"></i> ansh.mishra22@outlook.com</button>
             </div>
             <div class="gsap-reveal-el flex justify-center space-x-6 mt-8">
                 <a href="https://github.com/mishraansh07" target="_blank" class="text-3xl text-secondary hover:accent-text transition-colors p-2" aria-label="GitHub"><i class="fab fa-github"></i></a>
@@ -415,74 +412,117 @@
     <!-- Footer -->
     <footer class="text-center py-8 text-secondary text-sm"><p>&copy; 2025 Ansh Mishra. Designed & Built with ❤️.</p></footer>
 
-    <!-- Project Detail Modal -->
-    <div id="project-modal-overlay" class="modal-overlay" role="dialog" aria-labelledby="modal-project-title">
-        <div id="project-modal-content" class="modal-content p-6 md:p-10 w-full md:w-3/4 lg:w-2/3">
-            <button id="close-modal-button" class="absolute top-4 right-4 text-2xl text-secondary hover:text-primary-light" aria-label="Close">&times;</button>
-            <div class="modal-body pt-8 md:pt-4">
-                <h3 id="modal-project-title" class="text-3xl md:text-4xl font-bold mb-4"></h3>
-                <img id="modal-project-image" src="" alt="Project Image" class="w-full h-auto max-h-80 object-cover rounded-lg mb-6">
-                <h4 class="text-xl font-semibold mb-2 accent-text">Description</h4>
-                <p id="modal-project-long-description" class="text-secondary text-base leading-relaxed mb-6"></p>
-                <h4 class="text-xl font-semibold mb-2 accent-text">Technologies Used</h4>
-                <div id="modal-project-tech" class="flex flex-wrap gap-2 text-sm font-medium mb-6"></div>
-                <div class="flex flex-col sm:flex-row justify-end mt-6 space-y-4 sm:space-y-0 sm:space-x-4">
-                    <a id="modal-project-github" href="#" target="_blank" class="modern-btn">View on GitHub <i class="fab fa-github ml-2"></i></a>
-                    <a id="modal-project-demo" href="#" target="_blank" class="modern-btn modern-btn-secondary">Live Demo <i class="fas fa-external-link-alt ml-2"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <button id="scroll-to-top-btn" class="modern-btn" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
+    <button id="scroll-to-top-btn" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
 
     <script>
+        // --- Gradient Canvas Animation ---
+        class Gradient {
+            constructor() {
+                this.cnv = document.querySelector(`#gradient-canvas`);
+                this.ctx = this.cnv.getContext(`2d`);
+                this.circles = [];
+                this.resize();
+                window.addEventListener(`resize`, () => this.resize());
+                this.init();
+            }
+            resize() {
+                this.w = this.cnv.width = window.innerWidth;
+                this.h = this.cnv.height = window.innerHeight;
+            }
+            init() {
+                const colors = [
+                    getComputedStyle(this.cnv).getPropertyValue('--gradient-color-1').trim(),
+                    getComputedStyle(this.cnv).getPropertyValue('--gradient-color-2').trim(),
+                    getComputedStyle(this.cnv).getPropertyValue('--gradient-color-3').trim(),
+                    getComputedStyle(this.cnv).getPropertyValue('--gradient-color-4').trim()
+                ];
+                this.circles = Array.from({ length: 4 }, (_, i) => ({
+                    x: Math.random() * this.w,
+                    y: Math.random() * this.h,
+                    r: Math.random() * 400 + 200,
+                    vx: (Math.random() - 0.5) * 0.2,
+                    vy: (Math.random() - 0.5) * 0.2,
+                    color: colors[i]
+                }));
+                this.animate();
+            }
+            animate() {
+                this.ctx.clearRect(0, 0, this.w, this.h);
+                this.circles.forEach(circle => {
+                    if (circle.x < 0 || circle.x > this.w) circle.vx *= -1;
+                    if (circle.y < 0 || circle.y > this.h) circle.vy *= -1;
+                    circle.x += circle.vx;
+                    circle.y += circle.vy;
+                    const grad = this.ctx.createRadialGradient(circle.x, circle.y, 0, circle.x, circle.y, circle.r);
+                    grad.addColorStop(0, circle.color);
+                    grad.addColorStop(1, `${circle.color}00`);
+                    this.ctx.fillStyle = grad;
+                    this.ctx.beginPath();
+                    this.ctx.arc(circle.x, circle.y, circle.r, 0, Math.PI * 2);
+                    this.ctx.fill();
+                });
+                requestAnimationFrame(() => this.animate());
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             gsap.registerPlugin(ScrollTrigger);
+            const gradient = new Gradient();
 
             const projectsData = [
-                { id: 0, title: "MarketMind AI", image: "marketmindai.png", technologies: ["Streamlit", "Python", "Pandas", "Scikit-learn"], longDescription: "An intelligent marketing analytics tool that transforms raw campaign data into actionable insights, auto-calculating KPIs and predicting performance.", githubLink: "https://github.com/mishraansh07/MarketMind-AI", demoLink: "https://marketmindai.streamlit.app/" },
-                { id: 1, title: "Goaldigger AI", image: "goaldigger.png", technologies: ["NumPy", "Pandas", "Scikit-learn", "NLTK", "Transformers"], longDescription: "An AI-powered football prediction system that forecasts match outcomes and generates emotionally charged commentary, simulating fan passion.", githubLink: "https://github.com/AnshMishra/conversational-ai-chatbot", demoLink: "" },
-                { id: 2, title: "NeuraPulse", image: "Production.jpg", technologies: ["Python", "Emotional AI", "Personalization"], longDescription: "An AI assistant that adapts to your emotions, offering smart schedules and mood-based support. (Currently in planning phase).", githubLink: "", demoLink: "" }
+                { id: 0, title: "MarketMind AI", image: "marketmindai.png", longDescription: "An intelligent marketing analytics tool that transforms raw campaign data into actionable insights, auto-calculating KPIs and predicting performance.", technologies: ["Streamlit", "Python", "Pandas", "Scikit-learn"], githubLink: "https://github.com/mishraansh07/MarketMind-AI", demoLink: "https://marketmindai.streamlit.app/" },
+                { id: 1, title: "Goaldigger AI", image: "goaldigger.png", longDescription: "An AI-powered football prediction system that forecasts match outcomes and generates emotionally charged commentary, simulating fan passion.", technologies: ["NumPy", "Pandas", "Scikit-learn", "NLTK", "Transformers"], githubLink: "https://github.com/AnshMishra/conversational-ai-chatbot", demoLink: "" },
+                { id: 2, title: "NeuraPulse", image: "Production.jpg", longDescription: "An AI assistant that adapts to your emotions, offering smart schedules and mood-based support. (Currently in planning phase).", technologies: ["Python", "Emotional AI", "Personalization"], githubLink: "", demoLink: "" }
             ];
 
             const certificationsData = [
-                { title: "CodeDay Summer 2025", issuer: "CodeDay", image: "certi1.jpeg", credentialLink: "https://showcase.codeday.org/project/cmrc8udbao153059rmy43m4m9eb" },
-                { title: "Elements of AI", issuer: "University of Helsinki", image: "certi2.jpeg", credentialLink: "https://certificates.mooc.fi/validate/eghqkh2tli" },
-                { title: "Business Analysis", issuer: "Coursera", image: "WhatsApp Image 2025-07-18 at 03.33.07.jpeg", credentialLink: "https://coursera.org/verify/NGsVG3BTYMOK" },
-                { title: "Azure Computer Vision", issuer: "Microsoft", image: "WhatsApp Image 2025-07-18 at 03.33.06 (1).jpeg", credentialLink: "https://coursera.org/verify/ZX20M85FLCCJ" },
-                { title: "SEO with Squarespace", issuer: "Coursera", image: "WhatsApp Image 2025-07-18 at 03.33.06.jpeg", credentialLink: "https://coursera.org/verify/FU6XHHGOMB22" },
-                { title: "Azure AI Essentials", issuer: "LinkedIn Learning", image: "WhatsApp Image 2025-07-18 at 10.24.23.jpeg", credentialLink: "" }
+                { title: "CodeDay Summer 2025", issuer: "CodeDay", credentialLink: "https://showcase.codeday.org/project/cmrc8udbao153059rmy43m4m9eb" },
+                { title: "Elements of AI", issuer: "University of Helsinki", credentialLink: "https://certificates.mooc.fi/validate/eghqkh2tli" },
+                { title: "Business Analysis", issuer: "Coursera", credentialLink: "https://coursera.org/verify/NGsVG3BTYMOK" },
+                { title: "Azure Computer Vision", issuer: "Microsoft", credentialLink: "https://coursera.org/verify/ZX20M85FLCCJ" },
             ];
 
-            function populateGrid(selector, data, template) {
-                const container = document.querySelector(selector);
-                if (container) container.innerHTML = data.map(template).join('');
+            function populateProjects() {
+                const container = document.querySelector('.projects-container');
+                if (container) container.innerHTML = projectsData.map(p => `
+                    <div class="project-card glass-card">
+                        <div class="card-content">
+                            <img src="${p.image}" alt="${p.title}" class="w-full h-48 object-cover mb-4 rounded-lg" loading="lazy">
+                            <h3 class="text-xl font-bold mb-2">${p.title}</h3>
+                            <p class="text-secondary text-sm mb-4">${p.longDescription}</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                ${p.technologies.map(tech => `<span class="bg-accent-light/10 text-accent-light text-xs font-medium px-2 py-0.5 rounded">${tech}</span>`).join('')}
+                            </div>
+                            <div class="mt-auto flex gap-4">
+                                ${p.githubLink ? `<a href="${p.githubLink}" target="_blank" class="elegant-btn text-sm">GitHub</a>` : ''}
+                                ${p.demoLink ? `<a href="${p.demoLink}" target="_blank" class="elegant-btn elegant-btn-secondary text-sm">Live Demo</a>` : ''}
+                            </div>
+                        </div>
+                    </div>`).join('');
             }
 
-            const projectTemplate = (p) => `
-                <div class="minimal-card gsap-reveal-el cursor-pointer" data-project-id="${p.id}">
-                    <img src="${p.image}" alt="${p.title}" class="w-full h-48 object-cover mb-4 rounded-lg" loading="lazy">
-                    <h3 class="text-xl font-bold">${p.title}</h3>
-                    <p class="text-secondary text-sm mt-1">${p.longDescription.substring(0, 70)}...</p>
-                </div>`;
+            function populateCerts() {
+                const container = document.querySelector('.certification-list');
+                if(container) container.innerHTML = certificationsData.map(c => `
+                    <a href="${c.credentialLink}" target="_blank">
+                        <div>
+                            <h4 class="font-semibold">${c.title}</h4>
+                            <p class="text-sm">${c.issuer}</p>
+                        </div>
+                        <div class="arrow text-xl text-secondary"><i class="fas fa-arrow-right"></i></div>
+                    </a>`).join('');
+            }
 
-            const certTemplate = (c) => `
-                <div class="minimal-card gsap-reveal-el">
-                    <div class="h-40 mb-4 flex items-center justify-center"><img src="${c.image}" alt="${c.title}" class="max-h-full max-w-full object-contain" loading="lazy"></div>
-                    <h3 class="font-semibold text-xl">${c.title}</h3>
-                    <p class="text-secondary text-sm">${c.issuer}</p>
-                    ${c.credentialLink ? `<a href="${c.credentialLink}" target="_blank" class="modern-btn text-sm mt-4 inline-block">View</a>` : ''}
-                </div>`;
-
-            populateGrid('#projects .grid', projectsData, projectTemplate);
-            populateGrid('#certifications .grid', certificationsData, certTemplate);
+            populateProjects();
+            populateCerts();
 
             const themeToggle = document.getElementById('theme-toggle');
             const applyTheme = (theme) => {
                 document.documentElement.classList.toggle('dark', theme === 'dark');
                 themeToggle.innerHTML = theme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-                updateParticlesColor(theme);
+                setTimeout(() => gradient.init(), 100);
             };
             themeToggle.addEventListener('click', () => {
                 const newTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
@@ -494,21 +534,29 @@
             window.addEventListener('load', () => {
                 gsap.to(loadingScreen, { opacity: 0, duration: 0.5, onComplete: () => loadingScreen.style.display = 'none' });
                 
-                // --- GSAP Animations ---
                 gsap.utils.toArray('.gsap-reveal-el').forEach(el => {
                     gsap.fromTo(el, { y: 40, opacity: 0 }, {
-                        y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
+                        y: 0, opacity: 1, duration: 1, ease: 'power3.out',
                         scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' }
                     });
                 });
-
-                gsap.utils.toArray('.gsap-section').forEach(section => {
-                    const elems = section.querySelectorAll(".gsap-reveal-el");
-                    gsap.fromTo(elems, { y: 40, opacity: 0 }, {
-                        y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', stagger: 0.15,
-                        scrollTrigger: { trigger: section, start: 'top 80%', toggleActions: 'play none none none' }
+                
+                const projectsContainer = document.querySelector('.projects-container');
+                const horizontalWrapper = document.querySelector('.projects-container-wrapper');
+                if(projectsContainer && horizontalWrapper) {
+                    gsap.to(projectsContainer, {
+                        x: () => -(projectsContainer.scrollWidth - horizontalWrapper.clientWidth) + "px",
+                        ease: "none",
+                        scrollTrigger: {
+                            trigger: horizontalWrapper,
+                            start: "center center",
+                            end: () => "+=" + (projectsContainer.scrollWidth - horizontalWrapper.clientWidth),
+                            scrub: true,
+                            pin: true,
+                            invalidateOnRefresh: true,
+                        }
                     });
-                });
+                }
             });
 
             const mainHeader = document.getElementById('main-header');
@@ -531,30 +579,6 @@
             document.getElementById('close-mobile-menu').addEventListener('click', toggleMobileMenu);
             document.querySelectorAll('.mobile-nav-link').forEach(link => link.addEventListener('click', toggleMobileMenu));
             
-            const modalOverlay = document.getElementById('project-modal-overlay');
-            document.querySelectorAll('[data-project-id]').forEach(card => {
-                card.addEventListener('click', () => {
-                    const project = projectsData.find(p => p.id == card.dataset.projectId);
-                    if (project) {
-                        document.getElementById('modal-project-title').textContent = project.title;
-                        document.getElementById('modal-project-image').src = project.image;
-                        document.getElementById('modal-project-long-description').textContent = project.longDescription;
-                        document.getElementById('modal-project-tech').innerHTML = project.technologies.map(t => `<span class="bg-accent-light/10 text-accent-light text-xs font-medium px-2.5 py-0.5 rounded-full">${t}</span>`).join('');
-                        const githubLink = document.getElementById('modal-project-github');
-                        const demoLink = document.getElementById('modal-project-demo');
-                        githubLink.href = project.githubLink;
-                        githubLink.style.display = project.githubLink ? 'inline-flex' : 'none';
-                        demoLink.href = project.demoLink;
-                        demoLink.style.display = project.demoLink ? 'inline-flex' : 'none';
-                        modalOverlay.classList.add('open');
-                    }
-                });
-            });
-            const closeModal = () => modalOverlay.classList.remove('open');
-            document.getElementById('close-modal-button').addEventListener('click', closeModal);
-            modalOverlay.addEventListener('click', (e) => e.target === modalOverlay && closeModal());
-            document.addEventListener('keydown', (e) => e.key === 'Escape' && closeModal());
-
             document.getElementById('copy-email-button').addEventListener('click', () => {
                 navigator.clipboard.writeText("ansh.mishra22@outlook.com").then(() => {
                     const btn = document.getElementById('copy-email-button');
@@ -568,30 +592,6 @@
             window.addEventListener('scroll', () => scrollToTopBtn.classList.toggle('show', window.scrollY > 300));
             scrollToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-            function initParticles() {
-                particlesJS('particles-js', {
-                    particles: {
-                        number: { value: 30, density: { enable: true, value_area: 800 } },
-                        color: { value: "#ffffff" }, shape: { type: "circle" },
-                        opacity: { value: 0.5, random: true }, size: { value: 2, random: true },
-                        line_linked: { enable: false },
-                        move: { enable: true, speed: 1, direction: "none", random: true, straight: false, out_mode: "out" }
-                    },
-                    interactivity: { detect_on: "canvas", events: { onhover: { enable: false }, onclick: { enable: false } } },
-                    retina_detect: true
-                });
-                applyTheme(localStorage.getItem('theme') || 'light');
-            }
-
-            function updateParticlesColor(theme) {
-                if (window.pJSDom && window.pJSDom[0] && window.pJSDom[0].pJS) {
-                    const color = theme === 'dark' ? '#2D3748' : '#E2E8F0';
-                    window.pJSDom[0].pJS.particles.color.value = color;
-                    window.pJSDom[0].pJS.fn.particlesRefresh();
-                }
-            }
-            
-            initParticles();
             applyTheme(localStorage.getItem('theme') || 'light');
         });
     </script>
