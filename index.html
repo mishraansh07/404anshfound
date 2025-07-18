@@ -172,26 +172,24 @@
         .nav-link:hover, .nav-link.active { color: var(--accent-light); }
         .nav-link:hover::after, .nav-link.active::after { width: 100%; }
         
-        /* --- REVISED: Horizontal Scroll Section for Projects --- */
-        .horizontal-scroll-section {
-            height: auto; /* Let content define height */
-            padding: 4rem 0;
-        }
-        .projects-container-wrapper {
-            height: 70vh; /* Set a fixed height for the scrolling viewport */
-            display: flex;
-            align-items: center;
-        }
-        .projects-container {
-            display: flex;
-            flex-wrap: nowrap;
+        /* --- Projects Section --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
             gap: 2rem;
-            padding: 0 max(32px, (100% - 1280px) / 2);
         }
+        @media (min-width: 768px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (min-width: 1024px) {
+            .projects-grid {
+                display: flex; /* Revert to flex for horizontal scroll on desktop */
+            }
+        }
+
         .project-card {
-            flex: 0 0 85vw; /* On mobile, card is 85% of viewport width */
-            max-width: 400px; /* On desktop, max width is 400px */
-            height: auto;
             display: flex;
             flex-direction: column;
             transition: transform 0.4s ease;
@@ -371,17 +369,13 @@
             </div>
         </section>
 
-        <!-- Projects Section (Horizontal Scroll) -->
+        <!-- Projects Section -->
         <section id="projects" class="py-20 md:py-32 gsap-section">
             <div class="container mx-auto px-6 mb-12">
                 <h2 class="gsap-reveal-el text-4xl font-bold"><span class="accent-text">02.</span> Projects</h2>
             </div>
-            <div class="horizontal-scroll-section">
-                <div class="projects-container-wrapper">
-                    <div class="projects-container">
-                        <!-- Project cards will be populated by JS -->
-                    </div>
-                </div>
+            <div id="projects-container" class="projects-grid lg:projects-container">
+                <!-- Project cards will be populated by JS -->
             </div>
         </section>
 
@@ -483,13 +477,13 @@
             ];
 
             function populateProjects() {
-                const container = document.querySelector('.projects-container');
+                const container = document.getElementById('projects-container');
                 if (container) container.innerHTML = projectsData.map(p => `
                     <div class="project-card glass-card">
                         <div class="card-content">
                             <img src="${p.image}" alt="${p.title}" class="w-full h-48 object-cover mb-4 rounded-lg" loading="lazy">
                             <h3 class="text-xl font-bold mb-2">${p.title}</h3>
-                            <p class="text-secondary text-sm mb-4">${p.longDescription}</p>
+                            <p class="text-secondary text-sm mb-4 flex-grow">${p.longDescription}</p>
                         </div>
                         <div class="card-footer">
                             <div class="flex flex-wrap gap-2 mb-4">
@@ -534,6 +528,7 @@
             window.addEventListener('load', () => {
                 gsap.to(loadingScreen, { opacity: 0, duration: 0.5, onComplete: () => loadingScreen.style.display = 'none' });
                 
+                // --- GSAP Animations ---
                 gsap.utils.toArray('.gsap-reveal-el').forEach(el => {
                     gsap.fromTo(el, { y: 40, opacity: 0 }, {
                         y: 0, opacity: 1, duration: 1, ease: 'power3.out',
@@ -541,22 +536,28 @@
                     });
                 });
                 
-                const projectsContainer = document.querySelector('.projects-container');
-                const horizontalWrapper = document.querySelector('.projects-container-wrapper');
-                if(projectsContainer && horizontalWrapper) {
-                    gsap.to(projectsContainer, {
-                        x: () => -(projectsContainer.scrollWidth - horizontalWrapper.clientWidth) + "px",
-                        ease: "none",
-                        scrollTrigger: {
-                            trigger: horizontalWrapper,
-                            start: "center center",
-                            end: () => "+=" + (projectsContainer.scrollWidth - horizontalWrapper.clientWidth),
-                            scrub: true,
-                            pin: true,
-                            invalidateOnRefresh: true,
+                // --- Responsive Animations using matchMedia ---
+                ScrollTrigger.matchMedia({
+                    // Desktop horizontal scroll
+                    "(min-width: 1024px)": function() {
+                        const projectsContainer = document.querySelector('#projects-container');
+                        const projectsSection = document.querySelector('#projects');
+                        if(projectsContainer && projectsSection) {
+                            gsap.to(projectsContainer, {
+                                x: () => -(projectsContainer.scrollWidth - projectsSection.offsetWidth) + "px",
+                                ease: "none",
+                                scrollTrigger: {
+                                    trigger: projectsSection,
+                                    start: "center center",
+                                    end: () => "+=" + (projectsContainer.scrollWidth - projectsSection.offsetWidth),
+                                    scrub: true,
+                                    pin: true,
+                                    invalidateOnRefresh: true,
+                                }
+                            });
                         }
-                    });
-                }
+                    },
+                });
             });
 
             const mainHeader = document.getElementById('main-header');
@@ -574,7 +575,10 @@
             });
 
             const mobileMenu = document.getElementById('mobile-menu');
-            const toggleMobileMenu = () => mobileMenu.classList.toggle('open');
+            const toggleMobileMenu = () => {
+                const isOpen = mobileMenu.classList.toggle('open');
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            };
             document.getElementById('mobile-menu-button').addEventListener('click', toggleMobileMenu);
             document.getElementById('close-mobile-menu').addEventListener('click', toggleMobileMenu);
             document.querySelectorAll('.mobile-nav-link').forEach(link => link.addEventListener('click', toggleMobileMenu));
