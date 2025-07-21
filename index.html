@@ -6,345 +6,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ansh Mishra - AI/ML Developer</title>
 
-    <!-- SEO Meta Tags -->
     <meta name="description"
         content="Ansh Mishra's portfolio showcasing AI/ML projects, certifications, and expertise in building intelligent systems.">
     <meta name="keywords"
         content="Ansh Mishra, AI, Machine Learning, Deep Learning, NLP, Portfolio, Developer, Python, TensorFlow, PyTorch, Data Science">
     <meta name="author" content="Ansh Mishra">
     <meta name="robots" content="index, follow">
-
-    <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Ansh Mishra - AI/ML Developer Portfolio">
     <meta property="og:description"
         content="Explore Ansh Mishra's projects and expertise in Artificial Intelligence and Machine Learning.">
     <meta property="og:image" content="https://placehold.co/1200x630/4338CA/ffffff?text=Ansh+Mishra+Portfolio">
-    <meta property="og:url" content="YOUR_WEBSITE_URL">
+    <meta property="og:url" content="https://404anshfound.netlify.app/">
     <meta property="og:type" content="website">
 
-    <!-- Favicon -->
     <link rel="icon" href="https://placehold.co/32x32/4338CA/ffffff?text=AM" type="image/x-icon">
 
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap"
-        rel="stylesheet">
-    <!-- Animation Libraries -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
-    <style>
-        :root {
-            /* --- Elegant & Refined Color Palette --- */
-            /* Light Mode */
-            --bg-light: #FDFDFF; /* Softer white */
-            --text-primary-light: #111827;
-            --text-secondary-light: #6B7280;
-            --card-bg-light: rgba(255, 255, 255, 0.7); /* Semi-transparent */
-            --border-light: #E5E7EB;
-            --accent-light: #4338CA; /* Deep Indigo */
-            --accent-hover-light: #4F46E5;
-
-            /* Dark Mode */
-            --bg-dark: #0D1117; /* GitHub Dark */
-            --text-primary-dark: #F0F6FC;
-            --text-secondary-dark: #8B949E;
-            --card-bg-dark: rgba(22, 27, 34, 0.7); /* Semi-transparent */
-            --border-dark: #30363D;
-            --accent-dark: #7C3AED; /* Vibrant Violet */
-            --accent-hover-dark: #8B5CF6;
-        }
-        
-        html.dark {
-            --accent-light: var(--accent-dark);
-            --accent-hover-light: var(--accent-hover-dark);
-        }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-light);
-            color: var(--text-primary-light);
-            transition: background-color 0.3s ease, color 0.3s ease;
-            overflow-x: hidden;
-        }
-        
-        html.dark body { background-color: var(--bg-dark); color: var(--text-primary-dark); }
-        h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; color: var(--text-primary-light); }
-        html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark h5, html.dark h6 { color: var(--text-primary-dark); }
-        p { color: var(--text-secondary-light); line-height: 1.7; }
-        html.dark p { color: var(--text-secondary-dark); }
-
-        .accent-text { color: var(--accent-light); }
-        
-        #gradient-canvas {
-            width:100%;
-            height:100%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            --gradient-color-1: #e0c3fc; 
-            --gradient-color-2: #8ec5fc; 
-            --gradient-color-3: #f0abfc; 
-            --gradient-color-4: #a8c0ff;
-        }
-        html.dark #gradient-canvas {
-            --gradient-color-1: #1e2a78;
-            --gradient-color-2: #2a0d45;
-            --gradient-color-3: #1a1a3d;
-            --gradient-color-4: #3c1e59;
-        }
-
-        .header-glass {
-            background: rgba(253, 253, 255, 0.6);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-light);
-            transition: all 0.3s ease;
-        }
-        html.dark .header-glass {
-            background: rgba(13, 17, 23, 0.6);
-            border-bottom-color: var(--border-dark);
-        }
-        
-        .glass-card {
-            background-color: var(--card-bg-light);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--border-light);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        html.dark .glass-card { background-color: var(--card-bg-dark); border-color: var(--border-dark); }
-        
-        .elegant-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.75rem 1.5rem;
-            border-radius: 9999px;
-            font-weight: 500;
-            color: white;
-            background: var(--accent-light);
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-        .elegant-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 7px 20px rgba(0,0,0,0.1);
-            background: var(--accent-hover-light);
-        }
-        .elegant-btn-secondary {
-            background: transparent;
-            border-color: var(--border-light);
-            color: var(--text-primary-light);
-            box-shadow: none;
-        }
-        html.dark .elegant-btn-secondary { border-color: var(--border-dark); color: var(--text-primary-dark); }
-        .elegant-btn-secondary:hover {
-            border-color: var(--accent-light);
-            color: var(--accent-light);
-            background-color: var(--accent-light-alpha-10, rgba(67, 56, 202, 0.05));
-        }
-        html.dark .elegant-btn-secondary:hover {
-            background-color: var(--accent-dark-alpha-10, rgba(124, 58, 237, 0.05));
-        }
-
-        .nav-link {
-            position: relative; padding: 8px 12px;
-            transition: color 0.3s ease; font-weight: 500;
-        }
-        .nav-link::after {
-            content: ''; position: absolute; width: 0%; height: 2px;
-            bottom: 0; left: 50%; transform: translateX(-50%);
-            background-color: var(--accent-light); transition: width 0.3s ease-out;
-        }
-        .nav-link:hover, .nav-link.active { color: var(--accent-light); }
-        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-        
-        /* --- Projects Section --- */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-        @media (min-width: 768px) {
-            .projects-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        @media (min-width: 1024px) {
-            .projects-grid {
-                display: flex; /* Revert to flex for horizontal scroll on desktop */
-            }
-        }
-
-        .project-card {
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.4s ease;
-        }
-        .project-card:hover { transform: translateY(-10px); }
-        .project-card .card-content {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        .project-card .card-footer {
-            margin-top: auto; /* Pushes footer to the bottom */
-        }
-
-        .certification-list a {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem;
-            border-bottom: 1px solid var(--border-light);
-            transition: background-color 0.3s ease;
-        }
-        html.dark .certification-list a { border-color: var(--border-dark); }
-        .certification-list a:hover {
-            background-color: rgba(67, 56, 202, 0.03);
-        }
-        html.dark .certification-list a:hover {
-            background-color: rgba(124, 58, 237, 0.03);
-        }
-        .certification-list .arrow { transition: transform 0.3s ease; }
-        .certification-list a:hover .arrow { transform: translateX(5px); color: var(--accent-light); }
-
-        .timeline { position: relative; padding: 1rem 0; }
-        .timeline:before {
-            content: ''; position: absolute; top: 0; left: 15px;
-            height: 100%; width: 2px; background: var(--border-light);
-        }
-        html.dark .timeline:before { background: var(--border-dark); }
-        .timeline-item { position: relative; padding-left: 4rem; margin-bottom: 2rem; }
-        .timeline-dot {
-            position: absolute; left: 0; top: 0.25rem;
-            height: 32px; width: 32px;
-            background: var(--bg-light);
-            border: 2px solid var(--accent-light);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-        }
-        html.dark .timeline-dot { background: var(--bg-dark); }
-        .timeline-date { font-size: 0.8rem; color: var(--text-secondary-light); margin-bottom: 0.25rem; }
-        html.dark .timeline-date { color: var(--text-secondary-dark); }
-
-        #loading-screen {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: var(--bg-light);
-            html.dark & { background-color: var(--bg-dark); }
-            display: flex; justify-content: center; align-items: center;
-            z-index: 9999; transition: opacity 0.5s ease-out;
-        }
-        .spinner {
-            width: 60px; height: 60px; border: 5px solid;
-            border-color: var(--accent-light) transparent var(--accent-light) transparent;
-            border-radius: 50%; animation: spin 1.2s linear infinite;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        #scroll-to-top-btn {
-            position: fixed; bottom: 25px; right: 25px;
-            background-color: var(--accent-light);
-            color: white; width: 50px; height: 50px;
-            border-radius: 50%; display: flex;
-            justify-content: center; align-items: center;
-            font-size: 1.2rem; cursor: pointer;
-            opacity: 0; visibility: hidden; z-index: 998;
-            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border: none;
-        }
-        #scroll-to-top-btn.show { opacity: 1; visibility: visible; }
-        #scroll-to-top-btn:hover { transform: translateY(-5px) scale(1.1); }
-
-        #mobile-menu {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--bg-light);
-            html.dark & { background-color: var(--bg-dark); }
-            z-index: 999; display: flex; flex-direction: column;
-            justify-content: center; align-items: center;
-            transform: translateY(-100%); transition: transform 0.3s ease-in-out;
-        }
-        #mobile-menu.open { transform: translateY(0); }
-    </style>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <div id="loading-screen" role="status"><div class="spinner"></div></div>
     <canvas id="gradient-canvas" data-transition-in></canvas>
 
-    <!-- Header -->
     <header class="header-glass fixed top-0 left-0 right-0 z-50" id="main-header">
         <div class="container mx-auto px-6 flex justify-between items-center h-16">
             <a href="#home" class="text-2xl font-bold" aria-label="Ansh Mishra Home">Ansh<span class="accent-text">.</span></a>
             <nav class="hidden md:flex items-center space-x-2" aria-label="Main Navigation">
                 <a href="#home" class="nav-link" data-section="home">Home</a>
                 <a href="#about" class="nav-link" data-section="about">About</a>
+                <a href="#skills" class="nav-link" data-section="skills">Skills</a>
                 <a href="#projects" class="nav-link" data-section="projects">Projects</a>
                 <a href="#certifications" class="nav-link" data-section="certifications">Certifications</a>
+                <a href="blog.html" class="nav-link">Blog</a>
                 <a href="#contact" class="nav-link" data-section="contact">Contact</a>
             </nav>
             <div class="flex items-center">
-                <button id="theme-toggle" class="mr-4 text-xl text-secondary hover:accent-text transition-colors rounded-full p-2" aria-label="Toggle dark mode">
-                    <i class="fas fa-moon"></i>
-                </button>
+                <button id="theme-toggle" class="mr-4 text-xl text-secondary hover:accent-text transition-colors rounded-full p-2" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
                 <a href="Ansh_Mishra_Resume.pdf" download class="hidden md:inline-block elegant-btn" aria-label="Download Resume">Resume</a>
-                <button id="mobile-menu-button" class="md:hidden ml-4 text-2xl p-1" aria-label="Open mobile menu"><i class="fas fa-bars"></i></button>
+                <button id="mobile-menu-button" class="md:hidden ml-4 text-2xl p-1" aria-label="Open mobile menu" aria-haspopup="true" aria-expanded="false"><i class="fas fa-bars"></i></button>
             </div>
         </div>
     </header>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden" role="dialog">
+    <div id="mobile-menu" role="dialog" aria-modal="true">
         <div class="absolute top-0 right-0 p-6"><button id="close-mobile-menu" class="text-4xl" aria-label="Close mobile menu">&times;</button></div>
         <nav class="flex flex-col items-center justify-center h-full space-y-8 text-3xl w-full">
             <a href="#home" class="mobile-nav-link">Home</a>
             <a href="#about" class="mobile-nav-link">About</a>
+            <a href="#skills" class="mobile-nav-link">Skills</a>
             <a href="#projects" class="mobile-nav-link">Projects</a>
             <a href="#certifications" class="mobile-nav-link">Certifications</a>
+            <a href="blog.html" class="mobile-nav-link">Blog</a>
             <a href="#contact" class="mobile-nav-link">Contact</a>
             <a href="Ansh_Mishra_Resume.pdf" download class="mt-8 elegant-btn">Resume</a>
         </nav>
     </div>
 
-    <!-- Main Content -->
     <main class="relative z-10">
-
-        <!-- Home Section -->
         <section id="home" class="container mx-auto px-6 min-h-screen flex flex-col justify-center items-start text-left">
             <div class="max-w-4xl">
-                <p class="gsap-reveal-el accent-text text-xl font-medium mb-3">Hi, my name is</p>
-                <h1 class="gsap-reveal-el text-6xl md:text-8xl font-bold mb-4">Ansh Mishra.</h1>
-                <h2 class="gsap-reveal-el text-4xl md:text-6xl font-bold text-secondary mb-8">I build intelligent systems.</h2>
-                <p class="gsap-reveal-el max-w-xl text-lg mb-12">I'm a student developer with a passion for AI & ML, focused on creating smart, user-friendly solutions to complex problems.</p>
-                <div class="gsap-reveal-el"><a href="#projects" class="elegant-btn text-lg" aria-label="Explore My Work">Explore My Work</a></div>
+                <p class="gsap-reveal-el accent-text text-lg md:text-xl font-medium mb-3">Hi, my name is</p>
+                <h1 class="gsap-reveal-el text-5xl sm:text-6xl md:text-8xl font-bold mb-4">Ansh Mishra.</h1>
+                <h2 class="gsap-reveal-el text-3xl sm:text-4xl md:text-6xl font-bold text-secondary mb-8">I build intelligent systems.</h2>
+                <p class="gsap-reveal-el max-w-xl text-md md:text-lg mb-12">I'm a student developer with a passion for AI & ML, focused on creating smart, user-friendly solutions to complex problems.</p>
+                <div class="gsap-reveal-el"><a href="#projects" class="elegant-btn text-md md:text-lg" aria-label="Explore My Work">Explore My Work</a></div>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="container mx-auto px-6 py-20 md:py-32 gsap-section">
-            <h2 class="gsap-reveal-el text-4xl font-bold mb-12"><span class="accent-text">01.</span> About Me</h2>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <section id="about" class="container mx-auto px-6 py-16 md:py-24 gsap-section">
+            <h2 class="gsap-reveal-el text-3xl md:text-4xl font-bold mb-12 text-center"><span class="accent-text">01.</span> About Me</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-start">
                 <div class="gsap-reveal-el">
-                    <h3 class="text-2xl font-semibold mb-4">My Journey in AI</h3>
+                    <h3 class="text-xl md:text-2xl font-semibold mb-4">My Journey in AI</h3>
                     <p class="mb-6">Hello! I'm Ansh — a developer driven by curiosity. My journey into technology began with a humble "Hello, World!" and quickly transformed into a passion for building systems that can learn, adapt, and think.</p>
                     <p>I'm fascinated by deep learning and find joy in bringing models to life through hands-on coding. Beyond the code, I'm committed to innovation and staying in sync with the ever-evolving AI landscape.</p>
                 </div>
                 <div class="gsap-reveal-el">
-                    <h3 class="text-2xl font-semibold mb-4">Learning Journey</h3>
+                    <h3 class="text-xl md:text-2xl font-semibold mb-4">Learning Journey</h3>
                     <div class="timeline">
                         <div class="timeline-item">
                             <div class="timeline-dot"><i class="fas fa-star"></i></div>
@@ -368,107 +115,119 @@
                 </div>
             </div>
         </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="py-20 md:py-32 gsap-section">
-            <div class="container mx-auto px-6 mb-12">
-                <h2 class="gsap-reveal-el text-4xl font-bold"><span class="accent-text">02.</span> Projects</h2>
+        
+        <section id="skills" class="container mx-auto px-6 py-16 md:py-24 gsap-section">
+            <div class="text-center mb-16">
+                <h2 class="gsap-reveal-el text-3xl md:text-4xl font-bold"><span class="accent-text">02.</span> My Skillset</h2>
+                <p class="gsap-reveal-el mt-4 max-w-2xl mx-auto">A collection of technologies and tools I'm proficient in.</p>
             </div>
-            <div id="projects-container" class="projects-grid lg:projects-container">
-                <!-- Project cards will be populated by JS -->
+            <div class="gsap-reveal-el grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 md:gap-8">
+                <div class="glass-card skill-card"><i class="fab fa-python fa-3x mb-4"></i><h4 class="font-semibold">Python</h4></div>
+                <div class="glass-card skill-card"><i class="fas fa-brain fa-3x mb-4"></i><h4 class="font-semibold">TensorFlow</h4></div>
+                <div class="glass-card skill-card"><i class="fas fa-robot fa-3x mb-4"></i><h4 class="font-semibold">PyTorch</h4></div>
+                <div class="glass-card skill-card"><i class="fas fa-cogs fa-3x mb-4"></i><h4 class="font-semibold">Scikit-learn</h4></div>
+                <div class="glass-card skill-card"><i class="fas fa-database fa-3x mb-4"></i><h4 class="font-semibold">Pandas</h4></div>
+                <div class="glass-card skill-card"><i class="fas fa-chart-line fa-3x mb-4"></i><h4 class="font-semibold">NumPy</h4></div>
+                <div class="glass-card skill-card"><i class="fab fa-git-alt fa-3x mb-4"></i><h4 class="font-semibold">Git & GitHub</h4></div>
+                <div class="glass-card skill-card"><i class="fas fa-cloud fa-3x mb-4"></i><h4 class="font-semibold">Streamlit</h4></div>
+                <div class="glass-card skill-card"><i class="fab fa-html5 fa-3x mb-4"></i><h4 class="font-semibold">HTML5</h4></div>
+                <div class="glass-card skill-card"><i class="fab fa-css3-alt fa-3x mb-4"></i><h4 class="font-semibold">CSS3</h4></div>
             </div>
         </section>
 
-        <!-- Certifications Section -->
-        <section id="certifications" class="container mx-auto px-6 py-20 md:py-32 gsap-section">
-            <h2 class="gsap-reveal-el text-4xl font-bold mb-12"><span class="accent-text">03.</span> Certifications</h2>
-            <div class="gsap-reveal-el glass-card certification-list">
-                <!-- Certification list will be populated by JS -->
+        <section id="projects" class="container mx-auto px-6 py-16 md:py-24 gsap-section" role="region" aria-labelledby="projects-heading">
+            <div class="text-center mb-12">
+                <h2 id="projects-heading" class="gsap-reveal-el text-3xl md:text-4xl font-bold"><span class="accent-text">03.</span> My Projects</h2>
+                <p class="gsap-reveal-el mt-4 max-w-2xl mx-auto">An interactive deck of my latest work. Drag, swipe, or use the controls to navigate.</p>
+            </div>
+            <div class="project-selector-container gsap-reveal-el">
+                 <label for="project-selector" class="sr-only">Select a project to view</label>
+                 <select id="project-selector" class="project-selector">
+                     </select>
+                 <i class="fas fa-chevron-down selector-arrow"></i>
+            </div>
+            <div id="project-deck-container" class="gsap-reveal-el">
+                </div>
+            <div class="deck-controls gsap-reveal-el">
+                <button id="deck-reset-btn" class="deck-btn" aria-label="Reset Deck"><i class="fas fa-undo"></i></button>
+                <button id="deck-prev-btn" class="deck-btn" aria-label="Previous Project"><i class="fas fa-chevron-left"></i></button>
+                <button id="deck-next-btn" class="deck-btn" aria-label="Next Project"><i class="fas fa-chevron-right"></i></button>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="container mx-auto px-6 py-20 md:py-32 text-center gsap-section">
-            <h2 class="gsap-reveal-el text-4xl font-bold"><span class="accent-text">04.</span> Get In Touch</h2>
+        <div id="project-modal" class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm z-[999] flex items-center justify-center p-4 transition-opacity duration-300 opacity-0 pointer-events-none">
+            <div id="project-modal-content" class="glass-card w-full max-w-2xl max-h-[90vh] overflow-y-auto transform scale-95 transition-all duration-300 relative"></div>
+        </div>
+
+        <section id="certifications" class="container mx-auto px-6 py-16 md:py-24 gsap-section">
+            <h2 class="gsap-reveal-el text-3xl md:text-4xl font-bold mb-12 text-center"><span class="accent-text">04.</span> Certifications</h2>
+            <div id="certifications-grid" class="gsap-reveal-el grid grid-cols-1 md:grid-cols-2 gap-8"></div>
+        </section>
+
+        <section id="contact" class="container mx-auto px-6 py-16 md:py-24 text-center gsap-section">
+            <h2 class="gsap-reveal-el text-3xl md:text-4xl font-bold"><span class="accent-text">05.</span> Get In Touch</h2>
             <p class="gsap-reveal-el mx-auto mt-4 max-w-2xl text-lg mb-10">I'm always open to new ideas and collaborations. Feel free to reach out!</p>
-            <div class="gsap-reveal-el flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <button id="copy-email-button" class="elegant-btn elegant-btn-secondary w-full sm:w-auto"><i class="fas fa-envelope mr-2"></i> ansh.mishra22@outlook.com</button>
+            <div class="gsap-reveal-el max-w-xl mx-auto">
+                <form action="https://formspree.io/f/mnnzjoyo" method="POST" class="space-y-6 text-left">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium mb-2">Name</label>
+                            <input type="text" id="name" name="name" class="form-input" placeholder="Your Name" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium mb-2">Email</label>
+                            <input type="email" id="email" name="_replyto" class="form-input" placeholder="Your Email" required>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium mb-2">Message</label>
+                        <textarea id="message" name="message" rows="4" class="form-input" placeholder="Your message..." required></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="elegant-btn w-full sm:w-auto"><i class="fas fa-paper-plane mr-2"></i> Send Message</button>
+                    </div>
+                </form>
             </div>
-            <div class="gsap-reveal-el flex justify-center space-x-6 mt-8">
-                <a href="https://github.com/mishraansh07" target="_blank" class="text-3xl text-secondary hover:accent-text transition-colors p-2" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/anshmishra007/" target="_blank" class="text-3xl text-secondary hover:accent-text transition-colors p-2" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.instagram.com/mishraansh._/" target="_blank" class="text-3xl text-secondary hover:accent-text transition-colors p-2" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <div class="gsap-reveal-el flex justify-center space-x-6 mt-12">
+                <a href="https://github.com/mishraansh07" target="_blank" rel="noopener noreferrer" class="text-3xl text-secondary hover:accent-text transition-transform duration-300 hover:scale-125 p-2" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/anshmishra007/" target="_blank" rel="noopener noreferrer" class="text-3xl text-secondary hover:accent-text transition-transform duration-300 hover:scale-125 p-2" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/mishraansh._/" target="_blank" rel="noopener noreferrer" class="text-3xl text-secondary hover:accent-text transition-transform duration-300 hover:scale-125 p-2" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             </div>
         </section>
-
     </main>
 
-    <!-- Footer -->
     <footer class="text-center py-8 text-secondary text-sm"><p>&copy; 2025 Ansh Mishra. Designed & Built with ❤️.</p></footer>
-
     <button id="scroll-to-top-btn" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
 
     <script>
-        // --- Gradient Canvas Animation ---
-        class Gradient {
-            constructor() {
-                this.cnv = document.querySelector(`#gradient-canvas`);
-                this.ctx = this.cnv.getContext(`2d`);
-                this.circles = [];
-                this.resize();
-                window.addEventListener(`resize`, () => this.resize());
-                this.init();
+        // --- Core Classes & Setup ---
+        class Gradient { constructor() { this.cnv = document.querySelector(`#gradient-canvas`); if(!this.cnv) return; this.ctx = this.cnv.getContext(`2d`); this.circles = []; this.animationFrame = null; this.resize(); window.addEventListener(`resize`, () => this.resize()); this.init(); } resize() { this.w = this.cnv.width = window.innerWidth; this.h = this.cnv.height = window.innerHeight; } init() { try { const colors = [ getComputedStyle(this.cnv).getPropertyValue('--gradient-color-1').trim(), getComputedStyle(this.cnv).getPropertyValue('--gradient-color-2').trim(), getComputedStyle(this.cnv).getPropertyValue('--gradient-color-3').trim(), getComputedStyle(this.cnv).getPropertyValue('--gradient-color-4').trim() ]; this.circles = Array.from({ length: 4 }, (_, i) => ({ x: Math.random() * this.w, y: Math.random() * this.h, r: Math.random() * 400 + 200, vx: (Math.random() - 0.5) * 0.2, vy: (Math.random() - 0.5) * 0.2, color: colors[i] })); if (!this.animationFrame) { this.animate(); } } catch (e) { this.cnv.style.display = 'none'; } } animate() { this.ctx.clearRect(0, 0, this.w, this.h); this.circles.forEach(c => { if (c.x < 0 || c.x > this.w) c.vx *= -1; if (c.y < 0 || c.y > this.h) c.vy *= -1; c.x += c.vx; c.y += c.vy; const grad = this.ctx.createRadialGradient(c.x, c.y, 0, c.x, c.y, c.r); grad.addColorStop(0, c.color); grad.addColorStop(1, `${c.color}00`); this.ctx.fillStyle = grad; this.ctx.beginPath(); this.ctx.arc(c.x, c.y, c.r, 0, Math.PI * 2); this.ctx.fill(); }); this.animationFrame = requestAnimationFrame(() => this.animate()); } }
+
+        window.addEventListener('load', () => {
+            const loadingScreen = document.getElementById('loading-screen');
+            if (typeof gsap !== 'undefined') {
+                gsap.to(loadingScreen, { opacity: 0, duration: 0.5, onComplete: () => loadingScreen.style.display = 'none' });
+            } else {
+                loadingScreen.style.transition = 'opacity 0.5s ease';
+                loadingScreen.style.opacity = 0;
+                setTimeout(() => { loadingScreen.style.display = 'none'; }, 500);
             }
-            resize() {
-                this.w = this.cnv.width = window.innerWidth;
-                this.h = this.cnv.height = window.innerHeight;
-            }
-            init() {
-                const colors = [
-                    getComputedStyle(this.cnv).getPropertyValue('--gradient-color-1').trim(),
-                    getComputedStyle(this.cnv).getPropertyValue('--gradient-color-2').trim(),
-                    getComputedStyle(this.cnv).getPropertyValue('--gradient-color-3').trim(),
-                    getComputedStyle(this.cnv).getPropertyValue('--gradient-color-4').trim()
-                ];
-                this.circles = Array.from({ length: 4 }, (_, i) => ({
-                    x: Math.random() * this.w,
-                    y: Math.random() * this.h,
-                    r: Math.random() * 400 + 200,
-                    vx: (Math.random() - 0.5) * 0.2,
-                    vy: (Math.random() - 0.5) * 0.2,
-                    color: colors[i]
-                }));
-                this.animate();
-            }
-            animate() {
-                this.ctx.clearRect(0, 0, this.w, this.h);
-                this.circles.forEach(circle => {
-                    if (circle.x < 0 || circle.x > this.w) circle.vx *= -1;
-                    if (circle.y < 0 || circle.y > this.h) circle.vy *= -1;
-                    circle.x += circle.vx;
-                    circle.y += circle.vy;
-                    const grad = this.ctx.createRadialGradient(circle.x, circle.y, 0, circle.x, circle.y, circle.r);
-                    grad.addColorStop(0, circle.color);
-                    grad.addColorStop(1, `${circle.color}00`);
-                    this.ctx.fillStyle = grad;
-                    this.ctx.beginPath();
-                    this.ctx.arc(circle.x, circle.y, circle.r, 0, Math.PI * 2);
-                    this.ctx.fill();
-                });
-                requestAnimationFrame(() => this.animate());
-            }
-        }
+        });
 
         document.addEventListener('DOMContentLoaded', () => {
             gsap.registerPlugin(ScrollTrigger);
             const gradient = new Gradient();
+            const lenis = new Lenis();
+            lenis.on('scroll', ScrollTrigger.update);
+            gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+            gsap.ticker.lagSmoothing(0);
 
+            // --- Data for Dynamic Sections ---
             const projectsData = [
-                { id: 0, title: "MarketMind AI", image: "marketmindai.png", longDescription: "An intelligent marketing analytics tool that transforms raw campaign data into actionable insights, auto-calculating KPIs and predicting performance.", technologies: ["Streamlit", "Python", "Pandas", "Scikit-learn"], githubLink: "https://github.com/mishraansh07/MarketMind-AI", demoLink: "https://marketmindai.streamlit.app/" },
-                { id: 1, title: "Goaldigger AI", image: "goaldigger.png", longDescription: "An AI-powered football prediction system that forecasts match outcomes and generates emotionally charged commentary, simulating fan passion.", technologies: ["NumPy", "Pandas", "Scikit-learn", "NLTK", "Transformers"], githubLink: "https://github.com/AnshMishra/conversational-ai-chatbot", demoLink: "" },
-                { id: 2, title: "NeuraPulse", image: "Production.jpg", longDescription: "An AI assistant that adapts to your emotions, offering smart schedules and mood-based support. (Currently in planning phase).", technologies: ["Python", "Emotional AI", "Personalization"], githubLink: "", demoLink: "" }
+                { id: 0, title: "MarketMind AI", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=870&auto=format&fit=crop", summary: "An intelligent marketing analytics tool that transforms raw data into actionable insights.", technologies: ["Streamlit", "Python", "Pandas"], longDescription: "MarketMind AI is a powerful tool designed for marketing professionals to automate the process of analyzing campaign data. It calculates key performance indicators (KPIs) and provides predictive insights to optimize future marketing strategies." },
+                { id: 1, title: "Goaldigger AI", image: "https://images.unsplash.com/photo-1517439273244-2395b6c5974a?q=80&w=870&auto=format&fit=crop", summary: "An AI system that forecasts match outcomes and generates emotionally charged commentary.", technologies: ["NumPy", "Scikit-learn", "NLTK"], longDescription: "Goaldigger AI leverages historical match data to predict football game outcomes. Its unique feature is a natural language generation module that creates passionate, fan-like commentary for the predicted results, adding an emotional layer to the data." },
+                { id: 2, title: "NeuraPulse", image: "https://images.unsplash.com/photo-1518186285589-2f76423843b5?q=80&w=870&auto=format&fit=crop", summary: "An AI assistant that adapts to your emotions, offering smart schedules and mood-based support.", technologies: ["Python", "AI", "Transformers"], longDescription: "NeuraPulse is a conceptual AI assistant that uses affective computing to understand a user's emotional state. It aims to provide personalized support by suggesting tasks, wellness activities, and content tailored to their current mood." }
             ];
-
             const certificationsData = [
                 { title: "CodeDay Summer 2025", issuer: "CodeDay", credentialLink: "https://showcase.codeday.org/project/cmrc8udbao153059rmy43m4m9eb" },
                 { title: "Elements of AI", issuer: "University of Helsinki", credentialLink: "https://certificates.mooc.fi/validate/eghqkh2tli" },
@@ -476,127 +235,253 @@
                 { title: "Azure Computer Vision", issuer: "Microsoft", credentialLink: "https://coursera.org/verify/ZX20M85FLCCJ" },
             ];
 
-            function populateProjects() {
-                const container = document.getElementById('projects-container');
-                if (container) container.innerHTML = projectsData.map(p => `
-                    <div class="project-card glass-card">
-                        <div class="card-content">
-                            <img src="${p.image}" alt="${p.title}" class="w-full h-48 object-cover mb-4 rounded-lg" loading="lazy">
-                            <h3 class="text-xl font-bold mb-2">${p.title}</h3>
-                            <p class="text-secondary text-sm mb-4 flex-grow">${p.longDescription}</p>
-                        </div>
-                        <div class="card-footer">
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                ${p.technologies.map(tech => `<span class="bg-accent-light/10 text-accent-light text-xs font-medium px-2 py-0.5 rounded">${tech}</span>`).join('')}
-                            </div>
-                            <div class="mt-auto flex gap-4">
-                                ${p.githubLink ? `<a href="${p.githubLink}" target="_blank" class="elegant-btn text-sm">GitHub</a>` : ''}
-                                ${p.demoLink ? `<a href="${p.demoLink}" target="_blank" class="elegant-btn elegant-btn-secondary text-sm">Live Demo</a>` : ''}
-                            </div>
-                        </div>
-                    </div>`).join('');
+            // --- Interactive Project Deck Logic ---
+            const deckContainer = document.getElementById('project-deck-container');
+            const projectSelector = document.getElementById('project-selector');
+            let isAnimating = false;
+            
+            function createProjectDeck(initialProjects) {
+                if (!deckContainer) return;
+                deckContainer.innerHTML = '';
+                initialProjects.forEach((project) => {
+                    const card = document.createElement('div');
+                    card.className = 'project-card';
+                    card.dataset.projectId = project.id;
+                    card.innerHTML = `
+                        <div class="project-card-image" style="background-image: url('${project.image}')"></div>
+                        <div class="project-card-content">
+                            <div class="project-card-tags">${project.technologies.map(tech => `<span class="project-card-tag">${tech}</span>`).join('')}</div>
+                            <h3 class="project-card-title">${project.title}</h3>
+                            <p class="project-card-summary">${project.summary}</p>
+                            <div class="project-card-actions"><button class="details-btn elegant-btn">View Details</button></div>
+                        </div>`;
+                    deckContainer.appendChild(card);
+                    card.querySelector('.details-btn').addEventListener('click', (e) => { e.stopPropagation(); openProjectModal(project); });
+                });
+                arrangeCards();
+                setupCardInteractions();
             }
 
-            function populateCerts() {
-                const container = document.querySelector('.certification-list');
-                if(container) container.innerHTML = certificationsData.map(c => `
-                    <a href="${c.credentialLink}" target="_blank">
-                        <div>
-                            <h4 class="font-semibold">${c.title}</h4>
-                            <p class="text-sm">${c.issuer}</p>
-                        </div>
-                        <div class="arrow text-xl text-secondary"><i class="fas fa-arrow-right"></i></div>
-                    </a>`).join('');
+            function arrangeCards() {
+                const cards = Array.from(deckContainer.children);
+                gsap.to(cards, {
+                    y: (i) => -i * 15,
+                    scale: (i) => 1 - i * 0.05,
+                    rotation: (i) => i === 0 ? 0 : (parseInt(cards[i].dataset.projectId, 10) % 2 === 0 ? -1 : 1) * (cards.length - i) * 0.5,
+                    duration: 0.5,
+                    ease: 'power3.out',
+                    stagger: 0.05,
+                    zIndex: (i) => cards.length - i
+                });
             }
 
-            populateProjects();
-            populateCerts();
+            function setupCardInteractions() {
+                const cards = deckContainer.querySelectorAll('.project-card');
+                if (cards.length === 0) return;
+                const topCard = cards[cards.length - 1];
 
+                let isDragging = false, startX = 0, posX = 0;
+
+                const onPointerDown = (e) => {
+                    if (isAnimating || e.target.classList.contains('details-btn')) return;
+                    isDragging = true;
+                    gsap.killTweensOf(topCard);
+                    topCard.classList.add('is-dragging');
+                    startX = e.pageX ?? e.touches[0].pageX;
+                    topCard.setPointerCapture(e.pointerId);
+                };
+
+                const onPointerMove = (e) => {
+                    if (!isDragging) return;
+                    const currentX = e.pageX ?? e.touches[0].pageX;
+                    posX = currentX - startX;
+                    const rotation = posX * 0.1;
+                    gsap.set(topCard, { x: posX, rotation: rotation });
+                };
+
+                const onPointerUp = (e) => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    topCard.classList.remove('is-dragging');
+                    topCard.releasePointerCapture(e.pointerId);
+                    if (Math.abs(posX) > 100) {
+                        swipeCard(posX > 0 ? 1 : -1);
+                    } else {
+                        gsap.to(topCard, { x: 0, rotation: 0, duration: 0.3, ease: 'power3.out' });
+                    }
+                };
+                topCard.addEventListener('pointerdown', onPointerDown);
+                topCard.addEventListener('pointermove', onPointerMove);
+                topCard.addEventListener('pointerup', onPointerUp);
+            }
+            
+            function swipeCard(direction, isPrev = false) {
+                if (isAnimating) return;
+                isAnimating = true;
+                
+                const cards = Array.from(deckContainer.children);
+                let cardToMove = isPrev ? cards[0] : cards[cards.length - 1];
+
+                if (isPrev) {
+                    gsap.set(cardToMove, { zIndex: cards.length + 1 });
+                }
+
+                gsap.to(cardToMove, { 
+                    x: direction * (window.innerWidth * 0.7), 
+                    rotation: direction * 15,
+                    duration: 0.5,
+                    ease: 'power3.in',
+                    onComplete: () => {
+                        if (isPrev) {
+                            deckContainer.appendChild(cardToMove);
+                        } else {
+                            deckContainer.insertBefore(cardToMove, deckContainer.firstElementChild);
+                        }
+                        gsap.set(cardToMove, { x: 0, rotation: 0 });
+                        arrangeCards();
+                        setupCardInteractions();
+                        updateSelector();
+                        isAnimating = false;
+                    }
+                });
+            }
+            
+            function updateSelector() {
+                const topCard = deckContainer.lastElementChild;
+                if (topCard) {
+                    projectSelector.value = topCard.dataset.projectId;
+                }
+            }
+
+            function populateProjectSelector() {
+                if (!projectSelector) return;
+                projectSelector.innerHTML = '';
+                projectsData.forEach(project => {
+                    const option = document.createElement('option');
+                    option.value = project.id;
+                    option.textContent = project.title;
+                    projectSelector.appendChild(option);
+                });
+            }
+
+            function onProjectSelect(event) {
+                if (isAnimating) return;
+                const selectedId = parseInt(event.target.value, 10);
+                const cards = Array.from(deckContainer.children);
+                const targetCard = cards.find(c => parseInt(c.dataset.projectId) === selectedId);
+                const targetIndex = cards.indexOf(targetCard);
+                
+                if (targetIndex === cards.length - 1) return;
+
+                isAnimating = true;
+                const cardsToMove = cards.slice(targetIndex + 1).reverse();
+                
+                let timeline = gsap.timeline({
+                    onComplete: () => {
+                        cardsToMove.forEach(c => deckContainer.insertBefore(c, cards[targetIndex]));
+                        deckContainer.appendChild(targetCard);
+                        arrangeCards();
+                        setupCardInteractions();
+                        updateSelector();
+                        isAnimating = false;
+                    }
+                });
+
+                timeline.to(cardsToMove, {
+                    x: (i) => (i % 2 === 0 ? 1 : -1) * (window.innerWidth * 0.7),
+                    rotation: (i) => (i % 2 === 0 ? 1 : -1) * 15,
+                    duration: 0.4,
+                    stagger: 0.1,
+                    ease: 'power3.in'
+                });
+            }
+
+            document.getElementById('deck-next-btn').addEventListener('click', () => swipeCard(1));
+            document.getElementById('deck-prev-btn').addEventListener('click', () => swipeCard(-1, true));
+            document.getElementById('deck-reset-btn').addEventListener('click', () => createProjectDeck(projectsData.slice().reverse()));
+            
+            createProjectDeck(projectsData.slice().reverse());
+            populateProjectSelector();
+            projectSelector.addEventListener('change', onProjectSelect);
+            updateSelector();
+
+            // --- Other Page Logic (Certs, Modal, etc.) ---
+            populateCerts(certificationsData);
+            const modal = document.getElementById('project-modal');
+            const modalContent = document.getElementById('project-modal-content');
+            function openProjectModal(project) {
+                if (!modal || !modalContent) return;
+                modalContent.innerHTML = `<div class="p-6"><img src="${project.image}" alt="${project.title}" class="w-full h-56 object-cover rounded-lg mb-6" loading="lazy"><h3 class="text-3xl font-bold mb-3">${project.title}</h3><p class="text-secondary mb-6">${project.longDescription}</p><div class="flex flex-wrap gap-2 mb-6">${project.technologies.map(tech => `<span class="bg-accent-light/10 text-accent-light text-xs font-medium px-3 py-1 rounded-full">${tech}</span>`).join('')}</div><div class="flex gap-4">${project.githubLink ? `<a href="${project.githubLink}" target="_blank" rel="noopener noreferrer" class="elegant-btn">GitHub</a>` : ''}${project.demoLink ? `<a href="${project.demoLink}" target="_blank" rel="noopener noreferrer" class="elegant-btn">Live Demo</a>` : ''}</div><button id="close-modal-btn" aria-label="Close project details" class="absolute top-4 right-4 text-3xl text-secondary hover:accent-text">&times;</button></div>`;
+                modal.classList.add('show');
+                modal.querySelector('#close-modal-btn').addEventListener('click', closeProjectModal);
+            }
+            function closeProjectModal() { if(modal) modal.classList.remove('show'); }
+            modal.addEventListener('click', (e) => { if (e.target === modal) closeProjectModal(); });
+            document.addEventListener('keydown', (e) => { if (e.key === "Escape" && modal.classList.contains('show')) closeProjectModal(); });
+            function populateCerts(certificationsData) {
+                const container = document.getElementById('certifications-grid');
+                if (!container) return;
+                container.innerHTML = certificationsData.map(c => `<a href="${c.credentialLink}" target="_blank" rel="noopener noreferrer" class="glass-card block hover:-translate-y-2 transition-transform duration-300"><div class="flex flex-col justify-between h-full"><div><h4 class="font-bold text-xl mb-2">${c.title}</h4><p class="text-secondary mb-4">Issued by: ${c.issuer}</p></div><div class="flex items-center accent-text font-semibold text-sm"><span>View Credential</span><i class="fas fa-arrow-right ml-2"></i></div></div></a>`).join('');
+            }
+
+            // --- General Page Logic (Theme, Menu, Scroll) ---
             const themeToggle = document.getElementById('theme-toggle');
             const applyTheme = (theme) => {
                 document.documentElement.classList.toggle('dark', theme === 'dark');
-                themeToggle.innerHTML = theme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-                setTimeout(() => gradient.init(), 100);
+                if(themeToggle) themeToggle.innerHTML = theme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+                setTimeout(() => { gradient.init(); }, 100);
             };
-            themeToggle.addEventListener('click', () => {
+            themeToggle?.addEventListener('click', () => {
                 const newTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
                 localStorage.setItem('theme', newTheme);
                 applyTheme(newTheme);
             });
 
-            const loadingScreen = document.getElementById('loading-screen');
-            window.addEventListener('load', () => {
-                gsap.to(loadingScreen, { opacity: 0, duration: 0.5, onComplete: () => loadingScreen.style.display = 'none' });
-                
-                // --- GSAP Animations ---
-                gsap.utils.toArray('.gsap-reveal-el').forEach(el => {
-                    gsap.fromTo(el, { y: 40, opacity: 0 }, {
-                        y: 0, opacity: 1, duration: 1, ease: 'power3.out',
-                        scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' }
-                    });
-                });
-                
-                // --- Responsive Animations using matchMedia ---
-                ScrollTrigger.matchMedia({
-                    // Desktop horizontal scroll
-                    "(min-width: 1024px)": function() {
-                        const projectsContainer = document.querySelector('#projects-container');
-                        const projectsSection = document.querySelector('#projects');
-                        if(projectsContainer && projectsSection) {
-                            gsap.to(projectsContainer, {
-                                x: () => -(projectsContainer.scrollWidth - projectsSection.offsetWidth) + "px",
-                                ease: "none",
-                                scrollTrigger: {
-                                    trigger: projectsSection,
-                                    start: "center center",
-                                    end: () => "+=" + (projectsContainer.scrollWidth - projectsSection.offsetWidth),
-                                    scrub: true,
-                                    pin: true,
-                                    invalidateOnRefresh: true,
-                                }
-                            });
-                        }
-                    },
-                });
-            });
-
             const mainHeader = document.getElementById('main-header');
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-link');
-            window.addEventListener('scroll', () => {
-                mainHeader.classList.toggle('shadow-lg', window.scrollY > 50);
+            const sections = document.querySelectorAll('main > section[id]');
+            const navLinks = document.querySelectorAll('.nav-link[data-section]');
+            lenis.on('scroll', ({ scroll }) => {
+                if (mainHeader) mainHeader.classList.toggle('shadow-lg', scroll > 50);
                 let current = '';
                 sections.forEach(section => {
-                    if (window.pageYOffset >= section.offsetTop - mainHeader.offsetHeight - 50) {
+                    const sectionTop = section.offsetTop;
+                    if (mainHeader && scroll >= sectionTop - mainHeader.offsetHeight - 50) {
                         current = section.getAttribute('id');
                     }
                 });
-                navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href').includes(current)));
+                navLinks.forEach(link => { link.classList.toggle('active', link.getAttribute('data-section') === current); });
             });
 
             const mobileMenu = document.getElementById('mobile-menu');
-            const toggleMobileMenu = () => {
-                const isOpen = mobileMenu.classList.toggle('open');
-                document.body.style.overflow = isOpen ? 'hidden' : '';
-            };
-            document.getElementById('mobile-menu-button').addEventListener('click', toggleMobileMenu);
-            document.getElementById('close-mobile-menu').addEventListener('click', toggleMobileMenu);
-            document.querySelectorAll('.mobile-nav-link').forEach(link => link.addEventListener('click', toggleMobileMenu));
-            
-            document.getElementById('copy-email-button').addEventListener('click', () => {
-                navigator.clipboard.writeText("ansh.mishra22@outlook.com").then(() => {
-                    const btn = document.getElementById('copy-email-button');
-                    const original = btn.innerHTML;
-                    btn.innerHTML = '<i class="fas fa-check mr-2"></i> Copied!';
-                    setTimeout(() => { btn.innerHTML = original; }, 2000);
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+            const openMenu = () => { mobileMenu?.classList.add('open'); mobileMenuButton?.setAttribute('aria-expanded', 'true'); closeMobileMenuButton?.focus(); };
+            const closeMenu = () => { mobileMenu?.classList.remove('open'); mobileMenuButton?.setAttribute('aria-expanded', 'false'); mobileMenuButton?.focus(); };
+            mobileMenuButton?.addEventListener('click', openMenu);
+            closeMobileMenuButton?.addEventListener('click', closeMenu);
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const href = link.getAttribute('href');
+                    if (!href.includes('#')) { closeMenu(); return; }
+                    e.preventDefault();
+                    closeMenu();
+                    const targetId = href.split('#')[1];
+                    setTimeout(() => lenis.scrollTo(`#${targetId}`, { duration: 1.5 }), 300);
                 });
             });
-
+            
             const scrollToTopBtn = document.getElementById('scroll-to-top-btn');
-            window.addEventListener('scroll', () => scrollToTopBtn.classList.toggle('show', window.scrollY > 300));
-            scrollToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+            lenis.on('scroll', ({ scroll }) => { scrollToTopBtn?.classList.toggle('show', scroll > 300); });
+            scrollToTopBtn?.addEventListener('click', () => { lenis.scrollTo(0); });
 
             applyTheme(localStorage.getItem('theme') || 'light');
+            
+            gsap.utils.toArray('.gsap-reveal-el').forEach(el => {
+                gsap.fromTo(el, { y: 40, opacity: 0 }, {
+                    y: 0, opacity: 1, duration: 1, ease: 'power3.out',
+                    scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' }
+                });
+            });
         });
     </script>
 </body>
