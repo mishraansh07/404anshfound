@@ -1,0 +1,343 @@
+:root {
+    /* Light Mode */
+    --bg-light: #FDFDFF;
+    --text-primary-light: #111827;
+    --text-secondary-light: #6B7280;
+    --card-bg-light: rgba(255, 255, 255, 0.7);
+    --border-light: #E5E7EB;
+    --accent-light: #4338CA;
+    --accent-hover-light: #4F46E5;
+    --accent-light-rgb: 67, 56, 202;
+
+    /* Dark Mode */
+    --bg-dark: #0D1117;
+    --text-primary-dark: #F0F6FC;
+    --text-secondary-dark: #8B949E;
+    --card-bg-dark: rgba(22, 27, 34, 0.7);
+    --border-dark: #30363D;
+    --accent-dark: #7C3AED;
+    --accent-hover-dark: #8B5CF6;
+    --accent-dark-rgb: 124, 58, 237;
+}
+
+html.dark {
+    --accent-light: var(--accent-dark);
+    --accent-hover-light: var(--accent-hover-dark);
+    --accent-light-rgb: var(--accent-dark-rgb);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-primary-light);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+}
+
+html.dark body { background-color: var(--bg-dark); color: var(--text-primary-dark); }
+h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; color: var(--text-primary-light); }
+html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark h5, html.dark h6 { color: var(--text-primary-dark); }
+p { color: var(--text-secondary-light); line-height: 1.7; }
+html.dark p { color: var(--text-secondary-dark); }
+
+.accent-text { color: var(--accent-light); }
+
+:focus-visible {
+    outline: 2px solid var(--accent-light);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+#gradient-canvas {
+    width:100%; height:100%; position: fixed; top: 0; left: 0; z-index: -1;
+    --gradient-color-1: #e0c3fc; --gradient-color-2: #8ec5fc; 
+    --gradient-color-3: #f0abfc; --gradient-color-4: #a8c0ff;
+}
+html.dark #gradient-canvas {
+    --gradient-color-1: #1e2a78; --gradient-color-2: #2a0d45;
+    --gradient-color-3: #1a1a3d; --gradient-color-4: #3c1e59;
+}
+
+.header-glass {
+    background: rgba(253, 253, 255, 0.6);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-light);
+    transition: all 0.3s ease;
+}
+html.dark .header-glass {
+    background: rgba(13, 17, 23, 0.6);
+    border-bottom-color: var(--border-dark);
+}
+
+.glass-card {
+    background-color: var(--card-bg-light);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--border-light);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+html.dark .glass-card { background-color: var(--card-bg-dark); border-color: var(--border-dark); }
+
+.elegant-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 0.75rem 1.5rem; border-radius: 9999px;
+    font-weight: 500; color: white;
+    background: var(--accent-light);
+    transition: all 0.3s ease; border: 1px solid transparent;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+.elegant-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(0,0,0,0.1);
+    background: var(--accent-hover-light);
+}
+
+.nav-link {
+    position: relative; padding: 8px 12px;
+    transition: color 0.3s ease; font-weight: 500;
+}
+.nav-link::after {
+    content: ''; position: absolute; width: 0%; height: 2px;
+    bottom: 0; left: 50%; transform: translateX(-50%);
+    background-color: var(--accent-light); transition: width 0.3s ease-out;
+}
+.nav-link:hover, .nav-link.active { color: var(--accent-light); }
+.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+#loading-screen {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: var(--bg-light);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 9999; transition: opacity 0.5s ease-out;
+}
+html.dark #loading-screen { background-color: var(--bg-dark); }
+
+.spinner {
+    width: 60px; height: 60px; border: 5px solid;
+    border-color: var(--accent-light) transparent var(--accent-light) transparent;
+    border-radius: 50%; animation: spin 1.2s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+#mobile-menu {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--bg-light);
+    z-index: 999; display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    transform: translateY(-100%); transition: transform 0.3s ease-in-out;
+}
+html.dark #mobile-menu { background-color: var(--bg-dark); }
+#mobile-menu.open { transform: translateY(0); }
+
+#project-modal {
+    transition-property: opacity, visibility;
+    visibility: hidden;
+}
+#project-modal.show {
+    opacity: 1; pointer-events: auto; visibility: visible;
+}
+#project-modal.show #project-modal-content {
+    transform: scale(1);
+}
+
+/* ✨ REFINED: Interactive Project Deck Styles ✨ */
+#project-deck-container {
+    position: relative;
+    width: 90vw; /* Responsive width */
+    max-width: 400px;
+    height: auto;
+    aspect-ratio: 400 / 550; /* Maintain shape */
+    margin: 2rem auto 0;
+}
+
+.project-card {
+    position: absolute;
+    width: 100%;
+    height: 100%; /* Fill the responsive container */
+    border-radius: 1.5rem;
+    background-color: var(--card-bg-light);
+    border: 1px solid var(--border-light);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    cursor: grab;
+    user-select: none;
+    transform-origin: center center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    touch-action: none; /* Recommended for pointer events */
+}
+
+html.dark .project-card {
+    background-color: var(--card-bg-dark);
+    border-color: var(--border-dark);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.project-card.is-dragging {
+    cursor: grabbing;
+}
+
+.project-card-image {
+    width: 100%;
+    height: 45%; /* Use percentage for responsive height */
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;
+}
+
+.project-card-content {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    font-size: 14px; /* Adjust font size for smaller cards */
+}
+
+@media (min-width: 400px) {
+    .project-card-content {
+        font-size: 16px; /* Restore font size on larger screens */
+        padding: 1.5rem;
+    }
+     .deck-controls {
+        margin-top: 1.5rem;
+    }
+}
+
+.project-card-tags {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem;
+}
+
+.project-card-tag {
+    background: rgba(var(--accent-light-rgb), 0.1);
+    color: var(--accent-light);
+    font-size: 0.7rem; font-weight: 500;
+    padding: 0.25rem 0.75rem; border-radius: 9999px;
+}
+
+.project-card-title {
+    font-size: 1.5rem; font-family: 'Montserrat', sans-serif; margin-bottom: 0.5rem;
+}
+
+.project-card-summary {
+    line-height: 1.6; color: var(--text-secondary-light); flex-grow: 1;
+}
+html.dark .project-card-summary {
+    color: var(--text-secondary-dark);
+}
+
+.project-card-actions {
+    margin-top: 1rem; display: flex; gap: 1rem;
+}
+
+.deck-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.deck-btn {
+    width: 50px; height: 50px; border-radius: 50%;
+    border: 1px solid var(--border-light); background: var(--card-bg-light);
+    color: var(--text-primary-light); font-size: 1.2rem; transition: all 0.3s ease;
+}
+
+html.dark .deck-btn {
+    border-color: var(--border-dark); background: var(--card-bg-dark);
+    color: var(--text-primary-dark);
+}
+
+.deck-btn:hover {
+    background: var(--accent-light); color: white;
+    border-color: var(--accent-light); transform: scale(1.1);
+}
+
+.project-selector-container {
+    position: relative;
+    max-width: 400px; /* Match the card width */
+    margin: 0 auto 2.5rem;
+}
+
+.project-selector {
+    -webkit-appearance: none; /* Hide default arrow */
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    padding: 0.875rem 3rem 0.875rem 1.25rem;
+    border: 1px solid var(--border-light);
+    border-radius: 9999px;
+    background-color: var(--card-bg-light);
+    color: var(--text-primary-light);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+html.dark .project-selector {
+    border-color: var(--border-dark);
+    background-color: var(--card-bg-dark);
+    color: var(--text-primary-dark);
+}
+
+.project-selector:focus {
+    outline: none;
+    border-color: var(--accent-light);
+    box-shadow: 0 0 0 3px rgba(var(--accent-light-rgb), 0.15);
+}
+
+.selector-arrow {
+    position: absolute;
+    right: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary-light);
+    pointer-events: none; /* Allows clicks to pass through to the select */
+    transition: transform 0.3s ease;
+}
+
+html.dark .selector-arrow {
+    color: var(--text-secondary-dark);
+}
+
+.project-selector:focus + .selector-arrow {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.form-input {
+    width: 100%;
+    /* ✨ Applying the glass card effect */
+    background-color: var(--card-bg-light);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--border-light);
+    border-radius: 0.75rem; /* Slightly more rounded */
+    padding: 0.875rem 1.25rem;
+    color: var(--text-primary-light);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+html.dark .form-input {
+    background-color: var(--card-bg-dark);
+    border-color: var(--border-dark);
+    color: var(--text-primary-dark);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--accent-light);
+    box-shadow: 0 0 0 3px rgba(var(--accent-light-rgb), 0.2);
+}
+
+.form-input::placeholder {
+    color: var(--text-secondary-light);
+    opacity: 0.8;
+}
+
+html.dark .form-input::placeholder {
+    color: var(--text-secondary-dark);
+}

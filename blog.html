@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Ansh Mishra | AI/ML Insights</title>
+    <meta name="description" content="Writings and articles by Ansh Mishra on AI, Machine Learning, and technology.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* Blog-specific enhancements */
+        .featured-post {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .featured-post {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .post-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .post-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        html.dark .post-card:hover {
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.2);
+        }
+
+        .post-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s ease;
+        }
+
+        .post-card:hover .post-image {
+            transform: scale(1.05);
+        }
+
+        .post-tag {
+            display: inline-block;
+            background: rgba(var(--accent-light-rgb), 0.1);
+            color: var(--accent-light);
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            margin-bottom: 0.75rem;
+        }
+
+        .category-chip {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 9999px;
+            background: rgba(var(--accent-light-rgb), 0.1);
+            color: var(--accent-light);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-chip:hover,
+        .category-chip.active {
+            background: var(--accent-light);
+            color: white;
+        }
+
+        .search-container {
+            position: relative;
+            max-width: 500px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.875rem 1.25rem 0.875rem 3rem;
+            border: 1px solid var(--border-light);
+            border-radius: 9999px;
+            background: var(--card-bg-light);
+            transition: all 0.3s ease;
+            color: var(--text-primary-light);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        html.dark .search-input {
+            border-color: var(--border-dark);
+            color: var(--text-primary-dark);
+            background: var(--card-bg-dark);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-light);
+            box-shadow: 0 0 0 3px rgba(var(--accent-light-rgb), 0.15);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary-light);
+        }
+
+        html.dark .search-icon {
+            color: var(--text-secondary-dark);
+        }
+
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            color: var(--text-secondary-light);
+            margin-bottom: 1.5rem;
+        }
+
+        html.dark .empty-state-icon {
+            color: var(--text-secondary-dark);
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 3rem;
+        }
+
+        .page-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--card-bg-light);
+            border: 1px solid var(--border-light);
+            color: var(--text-primary-light);
+            transition: all 0.3s ease;
+        }
+
+        html.dark .page-btn {
+            background: var(--card-bg-dark);
+            border-color: var(--border-dark);
+            color: var(--text-primary-dark);
+        }
+
+        .page-btn:hover,
+        .page-btn.active {
+            background: var(--accent-light);
+            color: white;
+            border-color: var(--accent-light);
+        }
+
+        .loading-posts {
+            grid-column: 1 / -1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid;
+            border-color: var(--accent-light) transparent var(--accent-light) transparent;
+            border-radius: 50%;
+            animation: spin 1.2s linear infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="loading-screen" role="status">
+        <div class="spinner"></div>
+    </div>
+    <canvas id="gradient-canvas" data-transition-in></canvas>
+
+    <header class="header-glass fixed top-0 left-0 right-0 z-50" id="main-header">
+        <div class="container mx-auto px-6 flex justify-between items-center h-16">
+            <a href="new.html" class="text-2xl font-bold" aria-label="Ansh Mishra Home">Ansh<span
+                    class="accent-text">.</span></a>
+            <nav class="hidden md:flex items-center space-x-2" aria-label="Main Navigation">
+                <a href="new.html#home" class="nav-link">Home</a>
+                <a href="new.html#about" class="nav-link">About</a>
+                <a href="new.html#skills" class="nav-link">Skills</a>
+                <a href="new.html#projects" class="nav-link">Projects</a>
+                <a href="new.html#certifications" class="nav-link">Certifications</a>
+                <a href="blog.html" class="nav-link active">Blog</a>
+                <a href="new.html#contact" class="nav-link">Contact</a>
+            </nav>
+            <div class="flex items-center">
+                <button id="theme-toggle"
+                    class="mr-4 text-xl text-secondary hover:accent-text transition-colors rounded-full p-2"
+                    aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="Ansh_Mishra_Resume.pdf" download class="hidden md:inline-block elegant-btn"
+                    aria-label="Download Resume">Resume</a>
+                <button id="mobile-menu-button" class="md:hidden ml-4 text-2xl p-1" aria-label="Open mobile menu"
+                    aria-haspopup="true" aria-expanded="false"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <div id="mobile-menu" role="dialog" aria-modal="true">
+        <div class="absolute top-0 right-0 p-6"><button id="close-mobile-menu" class="text-4xl"
+                aria-label="Close mobile menu">&times;</button></div>
+        <nav class="flex flex-col items-center justify-center h-full space-y-8 text-3xl w-full">
+            <a href="new.html#home" class="mobile-nav-link">Home</a>
+            <a href="new.html#about" class="mobile-nav-link">About</a>
+            <a href="new.html#skills" class="mobile-nav-link">Skills</a>
+            <a href="new.html#projects" class="mobile-nav-link">Projects</a>
+            <a href="new.html#certifications" class="mobile-nav-link">Certifications</a>
+            <a href="blog.html" class="mobile-nav-link">Blog</a>
+            <a href="new.html#contact" class="mobile-nav-link">Contact</a>
+            <a href="Ansh_Mishra_Resume.pdf" download class="mt-8 elegant-btn">Resume</a>
+        </nav>
+    </div>
+
+    <main class="relative z-10 container mx-auto px-6 pt-24 pb-20">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold">AI Insights & Perspectives</h1>
+            <p class="mt-4 text-lg text-secondary max-w-2xl mx-auto">Thoughts and findings from my journey in the world
+                of AI and technology.</p>
+        </div>
+
+        <div class="search-container">
+            <div class="search-icon">
+                <i class="fas fa-search"></i>
+            </div>
+            <input type="text" id="search-input" class="search-input" placeholder="Search blog posts...">
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-3 mb-12">
+            <div class="category-chip active" data-category="all">All</div>
+            <div class="category-chip" data-category="technical">Technical Deep Dives</div>
+            <div class="category-chip" data-category="projects">Project Retrospectives</div>
+            <div class="category-chip" data-category="industry">Industry Analysis</div>
+            <div class="category-chip" data-category="learning">Learning Resources</div>
+        </div>
+
+        <div id="blog-posts-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="loading-posts">
+                <div class="loading-spinner"></div>
+                <p>Loading insightful content...</p>
+            </div>
+        </div>
+
+        <div class="pagination">
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </main>
+
+    <footer class="text-center py-12 text-secondary">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-center space-x-8 mb-6">
+                <a href="new.html#home" class="hover:accent-text transition-colors">Home</a>
+                <a href="blog.html" class="hover:accent-text transition-colors">Blog</a>
+                <a href="new.html#projects" class="hover:accent-text transition-colors">Projects</a>
+                <a href="new.html#contact" class="hover:accent-text transition-colors">Contact</a>
+            </div>
+            <p class="mb-6">&copy; 2025 Ansh Mishra. Crafting intelligent solutions.</p>
+            <div class="flex justify-center space-x-4">
+                <a href="#" class="text-sm hover:accent-text transition-colors">Privacy Policy</a>
+                <span>•</span>
+                <a href="#" class="text-sm hover:accent-text transition-colors">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- ✨ BUG FIX: Loading Screen Logic ---
+        // This now runs on 'load' to ensure all assets are ready.
+        // It's more robust and handles cases where GSAP might fail to load.
+        window.addEventListener('load', () => {
+            const loadingScreen = document.getElementById('loading-screen');
+            if (typeof gsap !== 'undefined') {
+                // GSAP is loaded, use a smooth animation
+                gsap.to(loadingScreen, {
+                    opacity: 0,
+                    duration: 0.5,
+                    onComplete: () => loadingScreen.style.display = 'none'
+                });
+            } else {
+                // GSAP failed, use a simple CSS fallback
+                console.warn("GSAP not found. Using simple fallback for loading screen.");
+                loadingScreen.style.transition = 'opacity 0.5s ease';
+                loadingScreen.style.opacity = 0;
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+            }
+        });
+
+
+        // --- Page Setup & Interactivity ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Re-initialize common components for this page
+            const gradient = new Gradient();
+            if (typeof Lenis !== 'undefined') {
+                const lenis = new Lenis();
+                lenis.on('scroll', (e) => {});
+                function raf(time) {
+                    lenis.raf(time);
+                    requestAnimationFrame(raf);
+                }
+                requestAnimationFrame(raf);
+            }
+
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+            const openMenu = () => {
+                mobileMenu?.classList.add('open');
+                mobileMenuButton?.setAttribute('aria-expanded', 'true');
+                closeMobileMenuButton?.focus();
+            };
+            const closeMenu = () => {
+                mobileMenu?.classList.remove('open');
+                mobileMenuButton?.setAttribute('aria-expanded', 'false');
+                mobileMenuButton?.focus();
+            };
+            mobileMenuButton?.addEventListener('click', openMenu);
+            closeMobileMenuButton?.addEventListener('click', closeMenu);
+            document.querySelectorAll('.mobile-nav-link').forEach(link => link.addEventListener('click', closeMenu));
+
+            const themeToggle = document.getElementById('theme-toggle');
+            const applyTheme = (theme) => {
+                document.documentElement.classList.toggle('dark', theme === 'dark');
+                if(themeToggle) themeToggle.innerHTML = theme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+                setTimeout(() => gradient.init(), 100);
+            };
+            themeToggle?.addEventListener('click', () => {
+                const newTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
+                localStorage.setItem('theme', newTheme);
+                applyTheme(newTheme);
+            });
+            
+            applyTheme(localStorage.getItem('theme') || 'light');
+
+
+            // --- Blog Content Loading & Filtering ---
+            const container = document.getElementById('blog-posts-container');
+            const blogPosts = [
+                { id: 'nlp-pipelines', title: "Optimizing NLP Pipelines for Real-World Data", date: "2025-07-15", summary: "Exploring techniques to handle messy, unstructured text data while maintaining model accuracy.", content: "Full content here...", category: "technical", image: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)", readTime: "8 min read" },
+                { id: 'marketmind-retrospective', title: "Lessons from Building MarketMind AI", date: "2025-06-22", summary: "How I transformed marketing analytics with automated KPI tracking and predictive insights.", content: "Full content here...", category: "projects", image: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)", readTime: "10 min read" },
+                { id: 'emotional-ai', title: "The Next Frontier: Emotional AI Systems", date: "2025-05-10", summary: "Exploring how affective computing is creating more human-centered AI experiences.", content: "Full content here...", category: "industry", image: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)", readTime: "6 min read" },
+                { id: 'reinforcement-learning', title: "Getting Started with Reinforcement Learning", date: "2025-04-18", summary: "A practical guide to implementing your first reinforcement learning agent.", content: "Full content here...", category: "learning", image: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)", readTime: "12 min read" },
+                { id: 'mlops-best-practices', title: "MLOps Best Practices for Small Teams", date: "2025-03-05", summary: "Streamlining machine learning workflows without enterprise-level resources.", content: "Full content here...", category: "technical", image: "linear-gradient(135deg, #a6c0fe 0%, #f68084 100%)", readTime: "9 min read" },
+                { id: 'future-ai-trends', title: "Emerging AI Trends to Watch in 2026", date: "2025-02-14", summary: "Predictions for the next wave of AI innovation and its potential impact.", content: "Full content here...", category: "industry", image: "linear-gradient(135deg, #d299c2 0%, #fef9d7 100%)", readTime: "7 min read" }
+            ];
+
+            function renderBlogPosts(posts) {
+                container.innerHTML = '';
+                if (posts.length === 0) {
+                    container.innerHTML = `<div class="empty-state"><div class="empty-state-icon"><i class="fas fa-search"></i></div><h3 class="text-xl font-bold mb-2">No matching posts found</h3><p class="text-secondary">Try adjusting your search or filter criteria</p></div>`;
+                    return;
+                }
+                const featuredPost = posts[0];
+                container.innerHTML += `<a href="post.html?post=${featuredPost.id}" class="featured-post glass-card post-card"><div class="h-64 md:h-full rounded-xl overflow-hidden" style="background: ${featuredPost.image};"></div><div class="p-6 flex flex-col justify-center"><span class="post-tag">Featured</span><h2 class="text-2xl md:text-3xl font-bold mb-4">${featuredPost.title}</h2><p class="text-secondary mb-6">${featuredPost.summary}</p><div class="flex justify-between items-center mt-auto"><span class="text-sm text-secondary">${new Date(featuredPost.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} • ${featuredPost.readTime}</span><div class="accent-text font-semibold flex items-center">Read Full Article <i class="fas fa-arrow-right ml-2"></i></div></div></div></a>`;
+                posts.slice(1).forEach(post => {
+                    container.innerHTML += `<a href="post.html?post=${post.id}" class="glass-card post-card"><div class="h-48 rounded-t-xl" style="background: ${post.image};"></div><div class="p-6 flex flex-col flex-grow"><span class="post-tag">${post.category.charAt(0).toUpperCase() + post.category.slice(1)}</span><h3 class="text-xl font-bold mb-3">${post.title}</h3><p class="text-secondary mb-4 flex-grow">${post.summary}</p><div class="flex justify-between items-center mt-4"><span class="text-sm text-secondary">${new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span><span class="text-sm text-secondary">${post.readTime}</span></div></div></a>`;
+                });
+            }
+
+            setTimeout(() => renderBlogPosts(blogPosts), 500); // Simulate network delay
+
+            const searchInput = document.getElementById('search-input');
+            searchInput.addEventListener('input', function () {
+                const searchTerm = this.value.toLowerCase();
+                const filteredPosts = blogPosts.filter(post => post.title.toLowerCase().includes(searchTerm) || post.summary.toLowerCase().includes(searchTerm) || post.category.toLowerCase().includes(searchTerm));
+                renderBlogPosts(filteredPosts);
+            });
+
+            const categoryChips = document.querySelectorAll('.category-chip');
+            categoryChips.forEach(chip => {
+                chip.addEventListener('click', function () {
+                    categoryChips.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                    const category = this.dataset.category;
+                    if (category === 'all') {
+                        renderBlogPosts(blogPosts);
+                    } else {
+                        const filteredPosts = blogPosts.filter(post => post.category === category);
+                        renderBlogPosts(filteredPosts);
+                    }
+                });
+            });
+        });
+        // Placed Gradient class outside DOMContentLoaded for wider access if needed
+        class Gradient {
+            constructor() {
+                this.cnv = document.querySelector(`#gradient-canvas`); if (!this.cnv) return;
+                this.ctx = this.cnv.getContext(`2d`); this.circles = []; this.animationFrame = null;
+                this.resize(); window.addEventListener(`resize`, () => this.resize()); this.init();
+            }
+            resize() { this.w = this.cnv.width = window.innerWidth; this.h = this.cnv.height = window.innerHeight; }
+            init() {
+                try {
+                    const colors = [
+                        getComputedStyle(this.cnv).getPropertyValue('--gradient-color-1').trim(),
+                        getComputedStyle(this.cnv).getPropertyValue('--gradient-color-2').trim(),
+                        getComputedStyle(this.cnv).getPropertyValue('--gradient-color-3').trim(),
+                        getComputedStyle(this.cnv).getPropertyValue('--gradient-color-4').trim()
+                    ];
+                    this.circles = Array.from({ length: 4 }, (_, i) => ({
+                        x: Math.random() * this.w, y: Math.random() * this.h, r: Math.random() * 400 + 200,
+                        vx: (Math.random() - 0.5) * 0.2, vy: (Math.random() - 0.5) * 0.2, color: colors[i]
+                    }));
+                    if (!this.animationFrame) { this.animate(); }
+                } catch (e) { this.cnv.style.display = 'none'; }
+            }
+            animate() {
+                this.ctx.clearRect(0, 0, this.w, this.h);
+                this.circles.forEach(c => {
+                    if (c.x < 0 || c.x > this.w) c.vx *= -1;
+                    if (c.y < 0 || c.y > this.h) c.vy *= -1;
+                    c.x += c.vx; c.y += c.vy;
+                    const grad = this.ctx.createRadialGradient(c.x, c.y, 0, c.x, c.y, c.r);
+                    grad.addColorStop(0, c.color); grad.addColorStop(1, `${c.color}00`);
+                    this.ctx.fillStyle = grad; this.ctx.beginPath(); this.ctx.arc(c.x, c.y, c.r, 0, Math.PI * 2); this.ctx.fill();
+                });
+                this.animationFrame = requestAnimationFrame(() => this.animate());
+            }
+        }
+    </script>
+</body>
+
+</html>
